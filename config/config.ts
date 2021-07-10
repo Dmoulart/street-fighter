@@ -5,6 +5,6 @@ export const GAME_RESOLUTION:{width:number,height:number} = {
     height:768
 }
 
-export const ANIMATION_FRAME_DURATION : number = 20000;
+export const ANIMATION_FRAME_DURATION : number = 50;
 
 export const FPS : number = 60;

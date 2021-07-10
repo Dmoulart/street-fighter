@@ -8,7 +8,6 @@ export class Animation {
         this.lastFrameTimeStamp = Date.now();
     }
     get currentFrame() {
-        console.log(Date.now() - this.lastFrameTimeStamp);
         if (Date.now() - this.lastFrameTimeStamp < ANIMATION_FRAME_DURATION) {
             return this.frames[this.currentFrameIndex];
         }
@@ -17,7 +16,6 @@ export class Animation {
         }
         this.currentFrameIndex++;
         this.lastFrameTimeStamp = Date.now();
-        console.log(this.currentFrameIndex);
         return this.frames[this.currentFrameIndex];
     }
 }

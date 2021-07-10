@@ -13,7 +13,7 @@ export class AnimationBuilder {
         // Every row of image sprite correspond to an animation : The index is base 1
         let y = (spriteRow - 1) * Sprite.FRAME.CHARACTER.HEIGHT;
         let animationFrames = [];
-        for (let x = 0; x <= sprite.image.width; x += Sprite.FRAME.CHARACTER.WIDTH) {
+        for (let x = 0; x < sprite.image.width; x += Sprite.FRAME.CHARACTER.WIDTH) {
             animationFrames.push(new AnimationFrame({
                 sprite: sprite,
                 x: x,

@@ -22,7 +22,7 @@ export class AnimationBuilder{
 
         let animationFrames : AnimationFrame[] = [];
 
-        for(let x = 0; x <= sprite.image.width; x+= Sprite.FRAME.CHARACTER.WIDTH){
+        for(let x = 0; x < sprite.image.width; x+= Sprite.FRAME.CHARACTER.WIDTH){
             animationFrames.push(new AnimationFrame({
                 sprite :  sprite,
                 x      :  x,

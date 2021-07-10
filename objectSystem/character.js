@@ -1,11 +1,10 @@
 import { Entity } from "./entity.js";
 import { Sprite } from "./sprite.js";
-import { AnimationBuilder } from "./animationBuilder.js";
 export class Character extends Entity {
     constructor(sprite) {
         super();
         this.sprite = sprite;
-        this.animation = AnimationBuilder.getInstance().build(sprite, 1);
+        //this.animation = AnimationBuilder.getInstance().build(sprite,1);
         console.log(this.animation);
     }
 }

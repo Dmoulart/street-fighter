@@ -2,11 +2,12 @@ import { engine } from "./engine.js";
 import { graphics } from "./graphics.js";
 import { ken } from "../objectSystem/character.js";
 import { GameTime } from "./gameTime.js";
+import { Loader } from "./loader.js";
 export class GameLoop {
-    load() {
+    async load() {
         engine.initialize();
         graphics.initialize();
-        return this;
+        return Loader.load();
     }
     start() {
         GameTime.startTimer();

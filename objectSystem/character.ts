@@ -13,7 +13,7 @@ export class Character extends Entity implements Drawable, Animable{
     public constructor(sprite:Sprite) {
         super();
         this.sprite = sprite;
-        this.animation = AnimationBuilder.getInstance().build(sprite,1);
+        //this.animation = AnimationBuilder.getInstance().build(sprite,1);
         console.log(this.animation);
     }
 

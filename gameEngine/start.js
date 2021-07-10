@@ -1,2 +1,3 @@
 import { GameLoop } from './gameLoop.js';
-new GameLoop().load().start();
+let gameLoop = new GameLoop;
+gameLoop.load().then(_ => gameLoop.start());

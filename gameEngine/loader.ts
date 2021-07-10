@@ -1,5 +1,6 @@
-import {ken} from "../objectSystem/character.js";
 import {AnimationBuilder} from "../objectSystem/animationBuilder.js";
+import {SpriteRow} from "../objectSystem/sprite.js";
+import {characters} from "../objectSystem/character.js";
 
 export class Loader {
 
@@ -8,11 +9,12 @@ export class Loader {
     }
 
     private static async loadSprites(): Promise<HTMLImageElement>{
-        return ken.sprite.loadImage()
+        return characters.ken.sprite.loadImage()
     }
 
     private static loadAnimations() : void{
         const animationBuilder :AnimationBuilder = AnimationBuilder.getInstance();
-        ken.animation = animationBuilder.build(ken.sprite,1);
+
+       characters.ken.animation = animationBuilder.build(characters.ken.sprite, SpriteRow.STILL);
     }
 }

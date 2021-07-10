@@ -14,10 +14,6 @@ export class Animation{
     private lastFrameTimeStamp !:number;
     private currentFrameIndex   :number = 0;
 
-    public static readonly SPRITE_ROW = {
-        NO_ACTION: 1
-    }
-
     public constructor(sprite:Sprite,frames: Array<AnimationFrame>) {
         this.sprite = sprite;
         this.frames = frames;
@@ -39,5 +35,4 @@ export class Animation{
 
         return this.frames[this.currentFrameIndex];
     }
-
 }

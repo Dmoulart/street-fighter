@@ -19,6 +19,3 @@ export class Animation {
         return this.frames[this.currentFrameIndex];
     }
 }
-Animation.SPRITE_ROW = {
-    NO_ACTION: 1
-};

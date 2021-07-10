@@ -1,4 +1,3 @@
-import { Sprite } from "./sprite.js";
 import { Animation } from "./animation.js";
 import { AnimationFrame } from "./animationFrame.js";
 export class AnimationBuilder {
@@ -11,15 +10,15 @@ export class AnimationBuilder {
     }
     build(sprite, spriteRow) {
         // Every row of image sprite correspond to an animation : The index is base 1
-        let y = (spriteRow - 1) * Sprite.FRAME.CHARACTER.HEIGHT;
+        let y = (spriteRow - 1) * AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT;
         let animationFrames = [];
-        for (let x = 0; x < sprite.image.width; x += Sprite.FRAME.CHARACTER.WIDTH) {
+        for (let x = 0; x < sprite.image.width; x += AnimationFrame.DIMENSIONS.CHARACTER.WIDTH) {
             animationFrames.push(new AnimationFrame({
                 sprite: sprite,
                 x: x,
                 y: y,
-                height: Sprite.FRAME.CHARACTER.HEIGHT,
-                width: Sprite.FRAME.CHARACTER.WIDTH
+                height: AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT,
+                width: AnimationFrame.DIMENSIONS.CHARACTER.WIDTH
             }));
         }
         return new Animation(sprite, animationFrames);

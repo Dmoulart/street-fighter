@@ -1,17 +1,17 @@
-import { Sprite } from "../objectSystem/sprite.js";
 import { isAnimable } from "../objectSystem/Animable.js";
 import { isDrawable } from "../objectSystem/drawable.js";
+import { AnimationFrame } from "../objectSystem/animationFrame.js";
 export class Renderer {
     initialize() {
     }
     render(entity, layer) {
         const drawOrder = Renderer.getDrawOrder(entity);
         layer.context.drawImage(drawOrder.sprite.image, 
-        //SourceX, SourceY
+        //SourceX            SourceY
         drawOrder.sX, drawOrder.sY, 
-        //SourceWidth, SourceHeight
+        //SourceWidth        SourceHeight
         drawOrder.sWidth, drawOrder.sHeight, 
-        //DestinationX, DestinationY
+        //DestinationX       DestinationY
         drawOrder.dX, drawOrder.dY, 
         //DestionationWidth, DestinationHeight
         drawOrder.dWidth, drawOrder.dHeight);
@@ -22,29 +22,25 @@ export class Renderer {
     static getDrawOrder(entity) {
         const getAnimableDrawOrder = (animable) => {
             let frame = animable.animation.currentFrame;
-            if (!frame) {
-                console.log(frame);
-                console.log(animable);
-            }
             return {
                 sprite: animable.sprite,
                 sX: frame.x, sY: frame.y,
-                sWidth: Sprite.FRAME.CHARACTER.WIDTH,
-                sHeight: Sprite.FRAME.CHARACTER.HEIGHT,
+                sWidth: AnimationFrame.DIMENSIONS.CHARACTER.WIDTH,
+                sHeight: AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT,
                 dX: 0, dY: 0,
-                dWidth: Sprite.FRAME.CHARACTER.WIDTH,
-                dHeight: Sprite.FRAME.CHARACTER.HEIGHT
+                dWidth: AnimationFrame.DIMENSIONS.CHARACTER.WIDTH,
+                dHeight: AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT
             };
         };
         const getDrawableDrawOrder = (drawable) => {
             return {
                 sprite: drawable.sprite,
                 sX: 0, sY: 0,
-                sWidth: Sprite.FRAME.CHARACTER.WIDTH,
-                sHeight: Sprite.FRAME.CHARACTER.HEIGHT,
+                sWidth: AnimationFrame.DIMENSIONS.CHARACTER.WIDTH,
+                sHeight: AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT,
                 dX: 0, dY: 0,
-                dWidth: Sprite.FRAME.CHARACTER.WIDTH,
-                dHeight: Sprite.FRAME.CHARACTER.HEIGHT
+                dWidth: AnimationFrame.DIMENSIONS.CHARACTER.WIDTH,
+                dHeight: AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT
             };
         };
         let drawOrder;

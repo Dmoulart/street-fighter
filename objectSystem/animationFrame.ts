@@ -10,6 +10,12 @@ export class AnimationFrame{
     public width!:number;
     public height!:number;
 
+    public static readonly DIMENSIONS = {
+        CHARACTER:{
+            WIDTH:65,
+            HEIGHT:100
+        }
+    }
     constructor(params: {
         sprite:Sprite,
         x:number,

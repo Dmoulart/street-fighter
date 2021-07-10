@@ -7,3 +7,9 @@ export class AnimationFrame {
         this.height = params.height;
     }
 }
+AnimationFrame.DIMENSIONS = {
+    CHARACTER: {
+        WIDTH: 65,
+        HEIGHT: 100
+    }
+};

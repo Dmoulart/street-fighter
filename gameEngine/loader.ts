@@ -23,7 +23,7 @@ export class Loader {
         return Loader.loadedSprites.KEN.loadImage();
     }
 
-    private static loadAnimations(){
+    private static loadAnimations():void{
         const animationBuilder :AnimationBuilder = AnimationBuilder.getInstance();
         Loader.loadedAnimations = {
             KEN: {
@@ -32,7 +32,7 @@ export class Loader {
         };
     }
 
-    private static loadCharacters(){
+    private static loadCharacters():void{
         Loader.loadedCharacters = {
             KEN: new Character($.SPRITES.KEN)
         }

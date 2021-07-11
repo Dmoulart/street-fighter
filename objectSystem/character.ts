@@ -16,7 +16,9 @@ export class Character extends Entity implements Drawable, Animable{
 
 
 }
-
-export const characters = {
-    ken : new Character(new Sprite(Sprite.URI.Ken))
+export type CharacterSet = {
+    KEN:Character
+}
+export const CHARACTERS = {
+    KEN : new Character(new Sprite(Sprite.URI.Ken))
 }

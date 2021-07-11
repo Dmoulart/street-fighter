@@ -1,1 +1,1 @@
-"use strict";
+export let animations;

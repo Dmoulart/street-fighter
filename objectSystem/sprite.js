@@ -21,3 +21,6 @@ export class Sprite {
 }
 Sprite.URI = SpriteURL;
 Sprite.ANIMATION_ROW = AnimationRow;
+export const SPRITES = {
+    KEN: new Sprite(Sprite.URI.Ken)
+};

@@ -12,4 +12,5 @@ export class AnimationFrame {
         this.height = params.height;
     }
 }
+//Animation Frame Character Data
 AnimationFrame.Character = Character;

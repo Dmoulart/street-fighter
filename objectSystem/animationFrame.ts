@@ -13,6 +13,7 @@ export class AnimationFrame{
     public width!:number;
     public height!:number;
 
+    //Animation Frame Character Data
     public static readonly Character = Character;
 
     constructor(params: {

@@ -6,6 +6,6 @@ export class Character extends Entity {
         this.sprite = sprite;
     }
 }
-export const characters = {
-    ken: new Character(new Sprite(Sprite.URI.Ken))
+export const CHARACTERS = {
+    KEN: new Character(new Sprite(Sprite.URI.Ken))
 };

@@ -27,3 +27,6 @@ export class Sprite{
     }
 }
 
+export const SPRITES = {
+    KEN: new Sprite(Sprite.URI.Ken)
+}

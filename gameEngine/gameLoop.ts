@@ -2,7 +2,7 @@ import {engine} from "./engine.js";
 import {graphics} from "./graphics.js";
 import {GameTime} from "./gameTime.js";
 import {Loader} from "./loader.js";
-import {characters} from "../objectSystem/character.js";
+import {CHARACTERS} from "../objectSystem/character.js";
 export class GameLoop{
 
     public async load(){
@@ -15,6 +15,7 @@ export class GameLoop{
 
     public start() : void {
         GameTime.startTimer();
+        CHARACTERS.KEN.animation = Loader.loadedAnimations.KEN.STILL;
         this.run();
     }
 
@@ -25,7 +26,7 @@ export class GameLoop{
     }
 
     private draw(): void{
-        engine.renderer.render(characters.ken,graphics.getCharacterLayer())
+        engine.renderer.render(CHARACTERS.KEN,graphics.getCharacterLayer())
     }
 
     private clear():void{

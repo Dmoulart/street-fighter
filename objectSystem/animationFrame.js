@@ -1,3 +1,8 @@
+var Character;
+(function (Character) {
+    Character[Character["Width"] = 65] = "Width";
+    Character[Character["Height"] = 100] = "Height";
+})(Character || (Character = {}));
 export class AnimationFrame {
     constructor(params) {
         this.sprite = params.sprite;
@@ -7,9 +12,4 @@ export class AnimationFrame {
         this.height = params.height;
     }
 }
-AnimationFrame.DIMENSIONS = {
-    CHARACTER: {
-        WIDTH: 65,
-        HEIGHT: 100
-    }
-};
+AnimationFrame.Character = Character;

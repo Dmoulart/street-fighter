@@ -1,7 +1,7 @@
 import {Entity} from "./entity.js";
 import {Drawable} from "./drawable.js";
 import {Sprite} from "./sprite.js";
-import {Animable} from "./Animable.js";
+import {Animable} from "./animable.js";
 import {Animation} from "./animation.js";
 
 export class Character extends Entity implements Drawable, Animable{
@@ -18,5 +18,5 @@ export class Character extends Entity implements Drawable, Animable{
 }
 
 export const characters = {
-    ken : new Character(new Sprite(Sprite.URL.KEN))
+    ken : new Character(new Sprite(Sprite.URI.Ken))
 }

@@ -18,17 +18,17 @@ export class AnimationBuilder{
     public build(sprite:Sprite,spriteRow:number):Animation{
 
         // Every row of image sprite correspond to an animation : The index is base 1
-        let y = (spriteRow - 1 ) * AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT;
+        let y = (spriteRow - 1 ) * AnimationFrame.Character.Height;
 
         let animationFrames : AnimationFrame[] = [];
 
-        for(let x = 0; x < sprite.image.width; x+= AnimationFrame.DIMENSIONS.CHARACTER.WIDTH){
+        for(let x = 0; x < sprite.image.width; x+= AnimationFrame.Character.Width){
             animationFrames.push(new AnimationFrame({
                 sprite :  sprite,
                 x      :  x,
                 y      :  y,
-                height :  AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT,
-                width  :  AnimationFrame.DIMENSIONS.CHARACTER.WIDTH
+                height :  AnimationFrame.Character.Height,
+                width  :  AnimationFrame.Character.Width
                 })
             );
         }

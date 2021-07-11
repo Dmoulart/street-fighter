@@ -7,5 +7,5 @@ export class Character extends Entity {
     }
 }
 export const characters = {
-    ken: new Character(new Sprite(Sprite.URL.KEN))
+    ken: new Character(new Sprite(Sprite.URI.Ken))
 };

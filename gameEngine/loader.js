@@ -1,6 +1,6 @@
 import { AnimationBuilder } from "../objectSystem/animationBuilder.js";
-import { SpriteRow } from "../objectSystem/sprite.js";
 import { characters } from "../objectSystem/character.js";
+import { Sprite } from "../objectSystem/sprite.js";
 export class Loader {
     static async load() {
         return this.loadSprites().then(this.loadAnimations);
@@ -10,6 +10,6 @@ export class Loader {
     }
     static loadAnimations() {
         const animationBuilder = AnimationBuilder.getInstance();
-        characters.ken.animation = animationBuilder.build(characters.ken.sprite, SpriteRow.STILL);
+        characters.ken.animation = animationBuilder.build(characters.ken.sprite, Sprite.ANIMATION_ROW.Still);
     }
 }

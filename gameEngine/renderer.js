@@ -1,4 +1,4 @@
-import { isAnimable } from "../objectSystem/Animable.js";
+import { isAnimable } from "../objectSystem/animable.js";
 import { isDrawable } from "../objectSystem/drawable.js";
 import { AnimationFrame } from "../objectSystem/animationFrame.js";
 export class Renderer {
@@ -25,22 +25,22 @@ export class Renderer {
             return {
                 sprite: animable.sprite,
                 sX: frame.x, sY: frame.y,
-                sWidth: AnimationFrame.DIMENSIONS.CHARACTER.WIDTH,
-                sHeight: AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT,
+                sWidth: AnimationFrame.Character.Width,
+                sHeight: AnimationFrame.Character.Height,
                 dX: 0, dY: 0,
-                dWidth: AnimationFrame.DIMENSIONS.CHARACTER.WIDTH,
-                dHeight: AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT
+                dWidth: AnimationFrame.Character.Width,
+                dHeight: AnimationFrame.Character.Height
             };
         };
         const getDrawableDrawOrder = (drawable) => {
             return {
                 sprite: drawable.sprite,
                 sX: 0, sY: 0,
-                sWidth: AnimationFrame.DIMENSIONS.CHARACTER.WIDTH,
-                sHeight: AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT,
+                sWidth: AnimationFrame.Character.Width,
+                sHeight: AnimationFrame.Character.Height,
                 dX: 0, dY: 0,
-                dWidth: AnimationFrame.DIMENSIONS.CHARACTER.WIDTH,
-                dHeight: AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT
+                dWidth: AnimationFrame.Character.Width,
+                dHeight: AnimationFrame.Character.Height
             };
         };
         let drawOrder;

@@ -1,5 +1,8 @@
 import {Sprite} from "./sprite.js";
-
+enum Character{
+    Width=65,
+    Height=100
+}
 export class AnimationFrame{
 
     private sprite!:Sprite;
@@ -10,12 +13,8 @@ export class AnimationFrame{
     public width!:number;
     public height!:number;
 
-    public static readonly DIMENSIONS = {
-        CHARACTER:{
-            WIDTH:65,
-            HEIGHT:100
-        }
-    }
+    public static readonly Character = Character;
+
     constructor(params: {
         sprite:Sprite,
         x:number,

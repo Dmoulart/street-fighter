@@ -2,7 +2,7 @@ import {GameComponent} from "./gameComponent.js";
 import {CanvasLayer} from "./canvasLayer.js";
 import {Sprite} from "../objectSystem/sprite.js";
 import {Entity} from "../objectSystem/entity.js";
-import {Animable, isAnimable} from "../objectSystem/Animable.js";
+import {Animable, isAnimable} from "../objectSystem/animable.js";
 import {Drawable, isDrawable} from "../objectSystem/drawable.js";
 import {AnimationFrame} from "../objectSystem/animationFrame.js";
 
@@ -57,13 +57,13 @@ export class Renderer implements GameComponent{
 
                 sX:frame.x, sY:frame.y,
 
-                sWidth : AnimationFrame.DIMENSIONS.CHARACTER.WIDTH,
-                sHeight: AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT,
+                sWidth : AnimationFrame.Character.Width,
+                sHeight: AnimationFrame.Character.Height,
 
                 dX:0,       dY:0,
 
-                dWidth : AnimationFrame.DIMENSIONS.CHARACTER.WIDTH,
-                dHeight: AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT
+                dWidth : AnimationFrame.Character.Width,
+                dHeight: AnimationFrame.Character.Height
             }
         }
         const getDrawableDrawOrder = (drawable: Drawable) => {
@@ -72,13 +72,13 @@ export class Renderer implements GameComponent{
 
                 sX:0,sY:0,
 
-                sWidth : AnimationFrame.DIMENSIONS.CHARACTER.WIDTH,
-                sHeight: AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT,
+                sWidth : AnimationFrame.Character.Width,
+                sHeight: AnimationFrame.Character.Height,
 
                 dX:0,dY:0,
 
-                dWidth : AnimationFrame.DIMENSIONS.CHARACTER.WIDTH,
-                dHeight: AnimationFrame.DIMENSIONS.CHARACTER.HEIGHT
+                dWidth : AnimationFrame.Character.Width,
+                dHeight: AnimationFrame.Character.Height
             }
         }
 

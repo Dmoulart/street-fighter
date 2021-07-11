@@ -1,13 +1,21 @@
 import {ROOT_DIR} from "../config/config.js";
 import {loadImage} from "../utils/image.js";
-
+/**
+ * Sprite row corresponding to animation
+ */
+enum AnimationRow{
+    Still = 1
+}
+enum SpriteURL{
+    Ken = "../assets/raw/ken_still.png"
+}
 export class Sprite{
 
-    public static readonly URL = {
-        KEN: "../assets/raw/ken_still.png"
-    }
+    public static readonly URI = SpriteURL;
 
-    public image!: HTMLImageElement;
+    public static readonly ANIMATION_ROW = AnimationRow;
+
+    public image !: HTMLImageElement;
 
     private readonly url !: string;
 
@@ -19,9 +27,3 @@ export class Sprite{
     }
 }
 
-/**
- * Sprite row corresponding to animation
- */
-export enum SpriteRow{
-    STILL = 1
-}

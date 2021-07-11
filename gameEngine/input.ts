@@ -1,12 +1,12 @@
 import {Player} from "./player.js";
 
-type MoveKeys = {
+export type MoveKeys = {
     moveLeft  : string[],
     moveRight : string[],
     Jump      : string[],
     Bow       : string[]
 }
-type PlayerConfig = {
+export type PlayerConfig = {
     moveKeys:MoveKeys
 }
 
@@ -23,9 +23,9 @@ const defaultConfig = {
 export class Input{
 
     public player !:Player;
-    private config !:PlayerConfig;
+    public config !:PlayerConfig;
 
-    private _pressedKeys !: Map<string,boolean>;
+    private readonly _pressedKeys !: Map<string,boolean>;
 
     public constructor(config:PlayerConfig = defaultConfig) {
         this.config             = config;

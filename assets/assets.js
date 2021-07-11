@@ -28,5 +28,7 @@ export class Assets {
         return Assets._CHARACTERS;
     }
 }
-//Assets Alias
+/**
+ * This constant is an Assets class alias
+ */
 export const $ = Assets;

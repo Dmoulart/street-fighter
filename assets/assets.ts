@@ -7,14 +7,13 @@ export type SpriteSet = {
     KEN: Sprite
 }
 export type AnimationSet = {
-    STILL:Animation,
-    MOVE_RIGHT:Animation
+    [animationName:string]:Animation
 }
 export type CharacterSet = {
-    KEN:Character
+    [characterName:string]:Character
 }
 export type CharacterAnimations = {
-    KEN: AnimationSet
+    [characterName:string]: AnimationSet
 }
 
 export class Assets{
@@ -53,5 +52,8 @@ export class Assets{
         return Assets._CHARACTERS;
     }
 }
-//Assets Alias
+
+/**
+ * This constant is an Assets class alias
+ */
 export const $ = Assets;

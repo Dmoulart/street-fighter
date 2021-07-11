@@ -7,7 +7,8 @@ export class Loader {
         return Loader
             .loadSprites()
             .then(Loader.loadAnimations)
-            .then(Loader.loadCharacters);
+            .then(Loader.loadCharacters)
+            .then(Loader.bindResourcesToCharacters);
     }
     static async loadSprites() {
         Loader.loadedSprites = {
@@ -26,7 +27,10 @@ export class Loader {
     }
     static loadCharacters() {
         Loader.loadedCharacters = {
-            KEN: new Character($.SPRITES.KEN)
+            KEN: new Character($.SPRITES.KEN, "KEN")
         };
+    }
+    static bindResourcesToCharacters() {
+        $.CHARACTERS.KEN.animation = $.ANIMATIONS.KEN.STILL;
     }
 }

@@ -2,7 +2,7 @@ import {PlayerConfig} from "./input.js";
 import {GameAgent} from "./gameAgent";
 import {Player} from "./player.js";
 
-enum ActionCommands{
+export enum ActionCommands{
     NONE,
     MOVE_RIGHT,
     MOVE_LEFT,

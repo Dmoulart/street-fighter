@@ -5,35 +5,38 @@ import {Loader} from "./loader.js";
 import {$, Assets} from "../assets/assets.js";
 import {Player} from "./player.js";
 import {Commands} from "./commands.js";
+import {ActionFactory} from "../simulation/actions/actionFactory.js";
+import {Action} from "../simulation/actions/action";
 
 export class GameLoop{
 
     private player !: Player;
-
+    private actionFactory :ActionFactory = ActionFactory.getInstance();
     public async load(){
 
         engine.initialize();
         graphics.initialize();
-
-        this.player = new Player;
-
         return Loader.load();
     }
 
     public start() : void {
-
+        this.player = new Player;
         this.player.input.listen();
 
         GameTime.startTimer();
-
-        //Assign animation in order to test
-        $.CHARACTERS.KEN.animation = $.ANIMATIONS.KEN.STILL;
 
         this.run();
     }
 
     private run() : void {
-        Commands.getCommandFrom(this.player);
+        const command = Commands.getCommandFrom(this.player);
+        const action : Action|null = this.actionFactory.getAction(command,this.player);
+        if(action) {
+            console.log(action);
+
+        }
+
+
         this.clear();
         this.draw();
         requestAnimationFrame(this.run.bind(this));

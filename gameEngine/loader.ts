@@ -13,7 +13,8 @@ export class Loader {
         return Loader
             .loadSprites()
             .then(Loader.loadAnimations)
-            .then(Loader.loadCharacters);
+            .then(Loader.loadCharacters)
+            .then(Loader.bindResourcesToCharacters);
     }
 
     private static async loadSprites(): Promise<HTMLImageElement>{
@@ -35,8 +36,11 @@ export class Loader {
 
     private static loadCharacters():void{
         Loader.loadedCharacters = {
-            KEN: new Character($.SPRITES.KEN)
+            KEN: new Character($.SPRITES.KEN,"KEN")
         }
     }
 
+    private static bindResourcesToCharacters() {
+        $.CHARACTERS.KEN.animation = $.ANIMATIONS.KEN.STILL;
+    }
 }

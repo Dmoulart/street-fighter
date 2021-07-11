@@ -1,4 +1,4 @@
-var ActionCommands;
+export var ActionCommands;
 (function (ActionCommands) {
     ActionCommands[ActionCommands["NONE"] = 0] = "NONE";
     ActionCommands[ActionCommands["MOVE_RIGHT"] = 1] = "MOVE_RIGHT";

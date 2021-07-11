@@ -1,4 +1,4 @@
-export class Entity{
-    public constructor() {
+export abstract class Entity{
+    protected constructor() {
     }
 }

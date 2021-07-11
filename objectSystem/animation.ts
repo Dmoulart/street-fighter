@@ -10,29 +10,33 @@ export class Animation{
 
     private startTime :number = Date.now();
 
-    //In order to start the animation
     private lastFrameTimeStamp !:number;
     private currentFrameIndex   :number = 0;
 
-    public constructor(sprite:Sprite,frames: Array<AnimationFrame>) {
+    public constructor(sprite:Sprite ,frames: Array<AnimationFrame>) {
         this.sprite = sprite;
         this.frames = frames;
         this.lastFrameTimeStamp = Date.now();
     }
 
     public get currentFrame() : AnimationFrame {
-        if(Date.now() - this.lastFrameTimeStamp < ANIMATION_FRAME_DURATION) {
-            return this.frames[this.currentFrameIndex];
-        }
 
-        if(this.currentFrameIndex + 1 >= this.frames.length) {
-            this.currentFrameIndex = -1;
-        }
+        if(this.isTooSoonToChangeFrame()) return this.frames[this.currentFrameIndex];
+
+        if(this.nextFrameIsOutOfBound()) this.currentFrameIndex = -1;
 
         this.currentFrameIndex ++;
 
         this.lastFrameTimeStamp = Date.now();
 
         return this.frames[this.currentFrameIndex];
+    }
+
+    private isTooSoonToChangeFrame(): boolean  {
+        return Date.now() - this.lastFrameTimeStamp < ANIMATION_FRAME_DURATION;
+    }
+
+    private nextFrameIsOutOfBound() : boolean {
+        return this.currentFrameIndex + 1 >= this.frames.length;
     }
 }

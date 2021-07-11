@@ -5,22 +5,21 @@ import { loadImage } from "../utils/image.js";
  */
 var AnimationRow;
 (function (AnimationRow) {
-    AnimationRow[AnimationRow["Still"] = 1] = "Still";
+    AnimationRow[AnimationRow["STILL"] = 1] = "STILL";
 })(AnimationRow || (AnimationRow = {}));
 var SpriteURL;
 (function (SpriteURL) {
-    SpriteURL["Ken"] = "../assets/raw/ken_still.png";
+    SpriteURL["KEN"] = "../assets/raw/ken_still.png";
 })(SpriteURL || (SpriteURL = {}));
 export class Sprite {
-    constructor(url) {
+    constructor(url = "empty") {
         this.url = `${ROOT_DIR}/${url}`;
     }
     async loadImage() {
-        return loadImage(this.url).then(image => this.image = image);
+        return loadImage(this.url).then(image => {
+            return this.image = image;
+        });
     }
 }
 Sprite.URI = SpriteURL;
 Sprite.ANIMATION_ROW = AnimationRow;
-export const SPRITES = {
-    KEN: new Sprite(Sprite.URI.Ken)
-};

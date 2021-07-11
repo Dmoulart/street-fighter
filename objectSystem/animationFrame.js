@@ -1,8 +1,8 @@
-var Character;
-(function (Character) {
-    Character[Character["Width"] = 65] = "Width";
-    Character[Character["Height"] = 100] = "Height";
-})(Character || (Character = {}));
+var CharacterDimensions;
+(function (CharacterDimensions) {
+    CharacterDimensions[CharacterDimensions["WIDTH"] = 65] = "WIDTH";
+    CharacterDimensions[CharacterDimensions["HEIGHT"] = 100] = "HEIGHT";
+})(CharacterDimensions || (CharacterDimensions = {}));
 export class AnimationFrame {
     constructor(params) {
         this.sprite = params.sprite;
@@ -13,4 +13,4 @@ export class AnimationFrame {
     }
 }
 //Animation Frame Character Data
-AnimationFrame.Character = Character;
+AnimationFrame.CHARACTER = CharacterDimensions;

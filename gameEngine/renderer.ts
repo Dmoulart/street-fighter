@@ -27,7 +27,6 @@ export class Renderer implements GameComponent{
 
     public render(entity: Entity, layer : CanvasLayer):void{
         const drawOrder = Renderer.getDrawOrder(entity);
-
         layer.context.drawImage(drawOrder.sprite.image,
             //SourceX            SourceY
             drawOrder.sX,        drawOrder.sY,
@@ -57,13 +56,13 @@ export class Renderer implements GameComponent{
 
                 sX:frame.x, sY:frame.y,
 
-                sWidth : AnimationFrame.Character.Width,
-                sHeight: AnimationFrame.Character.Height,
+                sWidth : AnimationFrame.CHARACTER.WIDTH,
+                sHeight: AnimationFrame.CHARACTER.HEIGHT,
 
                 dX:0,       dY:0,
 
-                dWidth : AnimationFrame.Character.Width,
-                dHeight: AnimationFrame.Character.Height
+                dWidth : AnimationFrame.CHARACTER.WIDTH,
+                dHeight: AnimationFrame.CHARACTER.HEIGHT
             }
         }
         const getDrawableDrawOrder = (drawable: Drawable) => {
@@ -72,13 +71,13 @@ export class Renderer implements GameComponent{
 
                 sX:0,sY:0,
 
-                sWidth : AnimationFrame.Character.Width,
-                sHeight: AnimationFrame.Character.Height,
+                sWidth : AnimationFrame.CHARACTER.WIDTH,
+                sHeight: AnimationFrame.CHARACTER.HEIGHT,
 
                 dX:0,dY:0,
 
-                dWidth : AnimationFrame.Character.Width,
-                dHeight: AnimationFrame.Character.Height
+                dWidth : AnimationFrame.CHARACTER.WIDTH,
+                dHeight: AnimationFrame.CHARACTER.HEIGHT
             }
         }
 

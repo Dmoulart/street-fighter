@@ -1,27 +1,31 @@
 import { AnimationBuilder } from "../objectSystem/animationBuilder.js";
-import { Character, CHARACTERS } from "../objectSystem/character.js";
-import { Sprite, SPRITES } from "../objectSystem/sprite.js";
+import { Character } from "../objectSystem/character.js";
+import { Sprite } from "../objectSystem/sprite.js";
+import { $ } from "../assets/assets.js";
 export class Loader {
     static async load() {
-        return this
+        return Loader
             .loadSprites()
-            .then(this.loadAnimations)
-            .then(this.loadCharacters);
+            .then(Loader.loadAnimations)
+            .then(Loader.loadCharacters);
     }
     static async loadSprites() {
-        return SPRITES.KEN.loadImage();
+        Loader.loadedSprites = {
+            KEN: new Sprite(Sprite.URI.KEN)
+        };
+        return Loader.loadedSprites.KEN.loadImage();
     }
-    static async loadAnimations() {
+    static loadAnimations() {
         const animationBuilder = AnimationBuilder.getInstance();
-        this.loadedAnimations = {
+        Loader.loadedAnimations = {
             KEN: {
-                STILL: animationBuilder.build(CHARACTERS.KEN.sprite, Sprite.ANIMATION_ROW.Still)
+                STILL: animationBuilder.build($.SPRITES.KEN, Sprite.ANIMATION_ROW.STILL)
             }
         };
     }
-    static async loadCharacters() {
-        this.loadedCharacters = {
-            KEN: new Character(SPRITES.KEN)
+    static loadCharacters() {
+        Loader.loadedCharacters = {
+            KEN: new Character($.SPRITES.KEN)
         };
     }
 }

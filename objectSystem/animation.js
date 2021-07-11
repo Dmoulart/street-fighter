@@ -8,14 +8,18 @@ export class Animation {
         this.lastFrameTimeStamp = Date.now();
     }
     get currentFrame() {
-        if (Date.now() - this.lastFrameTimeStamp < ANIMATION_FRAME_DURATION) {
+        if (this.isTooSoonToChangeFrame())
             return this.frames[this.currentFrameIndex];
-        }
-        if (this.currentFrameIndex + 1 >= this.frames.length) {
+        if (this.nextFrameIsOutOfBound())
             this.currentFrameIndex = -1;
-        }
         this.currentFrameIndex++;
         this.lastFrameTimeStamp = Date.now();
         return this.frames[this.currentFrameIndex];
+    }
+    isTooSoonToChangeFrame() {
+        return Date.now() - this.lastFrameTimeStamp < ANIMATION_FRAME_DURATION;
+    }
+    nextFrameIsOutOfBound() {
+        return this.currentFrameIndex + 1 >= this.frames.length;
     }
 }

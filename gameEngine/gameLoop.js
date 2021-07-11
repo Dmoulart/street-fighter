@@ -2,7 +2,7 @@ import { engine } from "./engine.js";
 import { graphics } from "./graphics.js";
 import { GameTime } from "./gameTime.js";
 import { Loader } from "./loader.js";
-import { CHARACTERS } from "../objectSystem/character.js";
+import { $ } from "../assets/assets.js";
 export class GameLoop {
     async load() {
         engine.initialize();
@@ -11,7 +11,8 @@ export class GameLoop {
     }
     start() {
         GameTime.startTimer();
-        CHARACTERS.KEN.animation = Loader.loadedAnimations.KEN.STILL;
+        //Assign animation in order to test
+        $.CHARACTERS.KEN.animation = $.ANIMATIONS.KEN.STILL;
         this.run();
     }
     run() {
@@ -20,7 +21,7 @@ export class GameLoop {
         requestAnimationFrame(this.run.bind(this));
     }
     draw() {
-        engine.renderer.render(CHARACTERS.KEN, graphics.getCharacterLayer());
+        engine.renderer.render($.CHARACTERS.KEN, graphics.getCharacterLayer());
     }
     clear() {
         engine.renderer.clear(graphics.getCharacterLayer());

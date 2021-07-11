@@ -25,22 +25,22 @@ export class Renderer {
             return {
                 sprite: animable.sprite,
                 sX: frame.x, sY: frame.y,
-                sWidth: AnimationFrame.Character.Width,
-                sHeight: AnimationFrame.Character.Height,
+                sWidth: AnimationFrame.CHARACTER.WIDTH,
+                sHeight: AnimationFrame.CHARACTER.HEIGHT,
                 dX: 0, dY: 0,
-                dWidth: AnimationFrame.Character.Width,
-                dHeight: AnimationFrame.Character.Height
+                dWidth: AnimationFrame.CHARACTER.WIDTH,
+                dHeight: AnimationFrame.CHARACTER.HEIGHT
             };
         };
         const getDrawableDrawOrder = (drawable) => {
             return {
                 sprite: drawable.sprite,
                 sX: 0, sY: 0,
-                sWidth: AnimationFrame.Character.Width,
-                sHeight: AnimationFrame.Character.Height,
+                sWidth: AnimationFrame.CHARACTER.WIDTH,
+                sHeight: AnimationFrame.CHARACTER.HEIGHT,
                 dX: 0, dY: 0,
-                dWidth: AnimationFrame.Character.Width,
-                dHeight: AnimationFrame.Character.Height
+                dWidth: AnimationFrame.CHARACTER.WIDTH,
+                dHeight: AnimationFrame.CHARACTER.HEIGHT
             };
         };
         let drawOrder;

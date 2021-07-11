@@ -13,12 +13,5 @@ export class Character extends Entity implements Drawable, Animable{
         super();
         this.sprite = sprite;
     }
+}
 
-
-}
-export type CharacterSet = {
-    KEN:Character
-}
-export const CHARACTERS = {
-    KEN : new Character(new Sprite(Sprite.URI.Ken))
-}

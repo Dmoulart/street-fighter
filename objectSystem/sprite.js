@@ -6,10 +6,11 @@ import { loadImage } from "../utils/image.js";
 var AnimationRow;
 (function (AnimationRow) {
     AnimationRow[AnimationRow["STILL"] = 1] = "STILL";
+    AnimationRow[AnimationRow["MOVE_RIGHT"] = 2] = "MOVE_RIGHT";
 })(AnimationRow || (AnimationRow = {}));
 var SpriteURL;
 (function (SpriteURL) {
-    SpriteURL["KEN"] = "../assets/raw/ken_still.png";
+    SpriteURL["KEN"] = "../assets/sprites/ken.png";
 })(SpriteURL || (SpriteURL = {}));
 export class Sprite {
     constructor(url = "empty") {

@@ -3,18 +3,26 @@ import {graphics} from "./graphics.js";
 import {GameTime} from "./gameTime.js";
 import {Loader} from "./loader.js";
 import {$, Assets} from "../assets/assets.js";
+import {Player} from "./player.js";
 
 export class GameLoop{
+
+    private player !: Player;
 
     public async load(){
 
         engine.initialize();
         graphics.initialize();
 
+        this.player = new Player;
+
         return Loader.load();
     }
 
     public start() : void {
+
+        this.player.input.listen();
+
         GameTime.startTimer();
 
         //Assign animation in order to test

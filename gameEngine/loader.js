@@ -19,7 +19,8 @@ export class Loader {
         const animationBuilder = AnimationBuilder.getInstance();
         Loader.loadedAnimations = {
             KEN: {
-                STILL: animationBuilder.build($.SPRITES.KEN, Sprite.ANIMATION_ROW.STILL)
+                STILL: animationBuilder.build($.SPRITES.KEN, Sprite.ANIMATION_ROW.STILL),
+                MOVE_RIGHT: animationBuilder.build($.SPRITES.KEN, Sprite.ANIMATION_ROW.MOVE_RIGHT),
             }
         };
     }

@@ -7,7 +7,8 @@ export type SpriteSet = {
     KEN: Sprite
 }
 export type AnimationSet = {
-    STILL:Animation
+    STILL:Animation,
+    MOVE_RIGHT:Animation
 }
 export type CharacterSet = {
     KEN:Character

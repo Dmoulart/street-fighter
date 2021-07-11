@@ -4,7 +4,7 @@ import {GameTime} from "./gameTime.js";
 import {Loader} from "./loader.js";
 import {$, Assets} from "../assets/assets.js";
 import {Player} from "./player.js";
-import {Command} from "./command.js";
+import {Commands} from "./commands.js";
 
 export class GameLoop{
 
@@ -33,7 +33,7 @@ export class GameLoop{
     }
 
     private run() : void {
-        Command.getCommand(this.player.input.pressedKeys, this.player.input.config);
+        Commands.getCommandFrom(this.player);
         this.clear();
         this.draw();
         requestAnimationFrame(this.run.bind(this));

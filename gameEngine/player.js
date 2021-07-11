@@ -1,6 +1,8 @@
 import { Input } from "./input.js";
-export class Player {
+import { GameAgent } from "./gameAgent.js";
+export class Player extends GameAgent {
     constructor(input = new Input) {
+        super();
         this.input = input;
         this.input.player = this;
     }

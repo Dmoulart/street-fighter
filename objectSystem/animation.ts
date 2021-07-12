@@ -1,36 +1,39 @@
 import {Sprite} from "./sprite.js";
 import {AnimationFrame} from "./animationFrame.js";
-import {ANIMATION_FRAME_DURATION} from "../config/config.js";
+import {ACTION_DURATION, ANIMATION_FRAME_DURATION} from "../config/config.js";
+import {NOT_STARTED, Timable} from "../simulation/timable.js";
 
-export class Animation{
+export class Animation implements Timable{
 
-    private readonly sprite !:Sprite;
     public  readonly frames !:Array<AnimationFrame>;
 
-    public static readonly NOT_STARTED :number = -1;
 
-    private startTime           :number        = Animation.NOT_STARTED;
-    private lastFrameTimeStamp  :number        = Animation.NOT_STARTED;
 
+    public duration: number  = ACTION_DURATION;
+    public isDone: boolean   = false;
+    public startTime:number  = NOT_STARTED;
+
+    private lastFrameTimeStamp  :number        = NOT_STARTED;
     private currentFrameIndex   :number        = 0;
+
+    private readonly sprite !:Sprite;
 
     public constructor(sprite:Sprite ,frames: Array<AnimationFrame>) {
         this.sprite = sprite;
         this.frames = frames;
     }
 
-    public start():Animation{
+    public start():void{
         this.startTime          = Date.now();
         this.lastFrameTimeStamp = Date.now();
-        return this
     }
-    public stop():Animation{
-        this.startTime          = Animation.NOT_STARTED;
-        return this;
+    public stop():void{
+        this.startTime          = NOT_STARTED;
+        this.isDone             = true;
     }
     public reset():Animation{
-        this.startTime          = Animation.NOT_STARTED;
-        this.lastFrameTimeStamp = Animation.NOT_STARTED;
+        this.startTime          = NOT_STARTED;
+        this.lastFrameTimeStamp = NOT_STARTED;
         return this;
     }
     public get currentFrame() : AnimationFrame {
@@ -56,10 +59,14 @@ export class Animation{
     }
 
     public get hasStarted():boolean{
-        return this.startTime !== Animation.NOT_STARTED;
+        return this.startTime !== NOT_STARTED;
     }
 
     public get timeElapsedSinceLastFrame() :number {
         return Date.now() - this.lastFrameTimeStamp;
     }
+    public get elapsedTime() :number {
+        return Date.now() - this.startTime;
+    }
+
 }

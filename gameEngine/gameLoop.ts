@@ -6,7 +6,8 @@ import {$, Assets} from "../assets/assets.js";
 import {Player} from "./player.js";
 import {Commands} from "./commands.js";
 import {ActionFactory} from "../simulation/actions/actionFactory.js";
-import {Action} from "../simulation/actions/action";
+import {Action} from "../simulation/actions/action.js";
+import {ActionHandler} from "../simulation/actions/actionHandler.js";
 
 export class GameLoop{
 
@@ -30,12 +31,15 @@ export class GameLoop{
     }
 
     private run() : void {
+
         const command = Commands.getCommandFrom(this.player);
         const action : Action|null = this.actionFactory.getAction(command,this.player);
-        if(action) {
-            console.log(action);
 
+        if(action){
+            this.player.character.action = action;
         }
+
+        ActionHandler.getInstance().updateActionAndAnimation(this.player.character);
 
 
         this.clear();

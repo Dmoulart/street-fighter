@@ -15,8 +15,5 @@ export class MoveAction extends Action{
         super(source);
         this.direction = direction;
         this.animationKey = `MOVE_${direction}`;
-        this.source.action = this;
-
-        this.source.animation = $.ANIMATIONS[source.name][this.animationKey];
     }
 }

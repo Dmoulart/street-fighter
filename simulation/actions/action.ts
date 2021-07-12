@@ -1,6 +1,6 @@
 import {Entity} from "../../objectSystem/entity.js";
 import {ACTION_DURATION} from "../../config/config.js";
-import {Timable} from "../timable";
+import {NOT_STARTED, Timable} from "../timable.js";
 
 export abstract class Action implements Timable{
 
@@ -18,5 +18,17 @@ export abstract class Action implements Timable{
         this.source = source;
     }
 
+    public start(): void {
+        this.startTime = Date.now();
+    }
+
+    public stop(): void {
+        this.startTime = NOT_STARTED;
+        this.isDone    = true;
+    }
+    public get elapsedTime() :number {
+        if(this.startTime === NOT_STARTED) return 0;
+        return Date.now() - this.startTime;
+    }
 
 }

@@ -6,6 +6,7 @@ import { $ } from "../assets/assets.js";
 import { Player } from "./player.js";
 import { Commands } from "./commands.js";
 import { ActionFactory } from "../simulation/actions/actionFactory.js";
+import { ActionHandler } from "../simulation/actions/actionHandler.js";
 export class GameLoop {
     constructor() {
         this.actionFactory = ActionFactory.getInstance();
@@ -26,8 +27,9 @@ export class GameLoop {
         const command = Commands.getCommandFrom(this.player);
         const action = this.actionFactory.getAction(command, this.player);
         if (action) {
-            console.log(action);
+            this.player.character.action = action;
         }
+        ActionHandler.getInstance().updateActionAndAnimation(this.player.character);
         this.clear();
         this.draw();
         requestAnimationFrame(this.run.bind(this));

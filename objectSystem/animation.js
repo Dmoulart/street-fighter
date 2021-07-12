@@ -1,8 +1,11 @@
-import { ANIMATION_FRAME_DURATION } from "../config/config.js";
+import { ACTION_DURATION, ANIMATION_FRAME_DURATION } from "../config/config.js";
+import { NOT_STARTED } from "../simulation/timable.js";
 export class Animation {
     constructor(sprite, frames) {
-        this.startTime = Animation.NOT_STARTED;
-        this.lastFrameTimeStamp = Animation.NOT_STARTED;
+        this.duration = ACTION_DURATION;
+        this.isDone = false;
+        this.startTime = NOT_STARTED;
+        this.lastFrameTimeStamp = NOT_STARTED;
         this.currentFrameIndex = 0;
         this.sprite = sprite;
         this.frames = frames;
@@ -10,15 +13,14 @@ export class Animation {
     start() {
         this.startTime = Date.now();
         this.lastFrameTimeStamp = Date.now();
-        return this;
     }
     stop() {
-        this.startTime = Animation.NOT_STARTED;
-        return this;
+        this.startTime = NOT_STARTED;
+        this.isDone = true;
     }
     reset() {
-        this.startTime = Animation.NOT_STARTED;
-        this.lastFrameTimeStamp = Animation.NOT_STARTED;
+        this.startTime = NOT_STARTED;
+        this.lastFrameTimeStamp = NOT_STARTED;
         return this;
     }
     get currentFrame() {
@@ -38,10 +40,12 @@ export class Animation {
         return this.currentFrameIndex + 1 >= this.frames.length;
     }
     get hasStarted() {
-        return this.startTime !== Animation.NOT_STARTED;
+        return this.startTime !== NOT_STARTED;
     }
     get timeElapsedSinceLastFrame() {
         return Date.now() - this.lastFrameTimeStamp;
     }
+    get elapsedTime() {
+        return Date.now() - this.startTime;
+    }
 }
-Animation.NOT_STARTED = -1;

@@ -1,5 +1,4 @@
 import { Action } from "./action.js";
-import { $ } from "../../assets/assets.js";
 export var Directions;
 (function (Directions) {
     Directions["Up"] = "UP";
@@ -12,7 +11,5 @@ export class MoveAction extends Action {
         super(source);
         this.direction = direction;
         this.animationKey = `MOVE_${direction}`;
-        this.source.action = this;
-        this.source.animation = $.ANIMATIONS[source.name][this.animationKey];
     }
 }

@@ -16,13 +16,14 @@ export class GameLoop{
 
         engine.initialize();
         graphics.initialize();
+
         return Loader.load();
     }
 
     public start() : void {
         this.player = new Player;
         this.player.input.listen();
-
+        this.player.character.animation.start()
         GameTime.startTimer();
 
         this.run();

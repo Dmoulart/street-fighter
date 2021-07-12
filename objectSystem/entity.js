@@ -10,4 +10,10 @@ export class Entity {
     set action(action) {
         this._action = action;
     }
+    get animation() {
+        return this._animation;
+    }
+    set animation(animation) {
+        this._animation = animation;
+    }
 }

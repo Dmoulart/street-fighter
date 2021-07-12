@@ -4,18 +4,27 @@ import {Action} from "../simulation/actions/action.js";
 export const UNKNOWN_NAME = "unknown"
 export abstract class Entity{
 
-    public sprite   !: Sprite;
-    public animation!: Animation;
-    private _action !: Action;
-    public name     !: string;
+    public   name       !: string;
+    public   sprite     !: Sprite;
+    private _animation  !: Animation;
+    private _action     !: Action;
+
     protected constructor(sprite:Sprite,name:string = UNKNOWN_NAME) {
         this.sprite = sprite;
         this.name = name;
     }
+
     public get action(){
         return this._action;
     }
     public set action(action:Action){
         this._action = action;
+    }
+
+    public get animation(){
+        return this._animation;
+    }
+    public set animation(animation:Animation){
+        this._animation = animation;
     }
 }

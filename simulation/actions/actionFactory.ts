@@ -17,8 +17,11 @@ export class ActionFactory {
     }
 
     public getAction(actionCommand : ActionCommands, agent :GameAgent):Action | null{
+
         let action:Action | null = null;
+
         switch(ActionCommands[actionCommand]){
+
             case ActionCommands[ActionCommands.MOVE_RIGHT]:
                 action = new MoveAction(agent.character,Directions.Right);
                 break;
@@ -27,6 +30,7 @@ export class ActionFactory {
                 break;
             default: break;
         }
+
         return action;
     }
 

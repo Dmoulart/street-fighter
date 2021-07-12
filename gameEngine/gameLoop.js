@@ -18,6 +18,7 @@ export class GameLoop {
     start() {
         this.player = new Player;
         this.player.input.listen();
+        this.player.character.animation.start();
         GameTime.startTimer();
         this.run();
     }

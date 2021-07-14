@@ -1,11 +1,11 @@
-import {Action} from "./action.js";
+import {Action, ActionKeys} from "./action.js";
 import {Character} from "../../objectSystem/character.js";
 
 export class StillAction extends Action {
 
     public constructor(character:Character) {
         super(character);
-        this.key = `STILL`;
+        this.key = ActionKeys.STILL;
     }
     public get isPossible():boolean{
         return this.isNotOfSameActionTypeAs(this.source.action)

@@ -59,7 +59,8 @@ export class Renderer implements GameComponent{
                 sWidth : AnimationFrame.CHARACTER.WIDTH,
                 sHeight: AnimationFrame.CHARACTER.HEIGHT,
 
-                dX:0,       dY:0,
+                dX: (<Entity>animable).position.x,
+                dY: (<Entity>animable).position.y,
 
                 dWidth : AnimationFrame.CHARACTER.WIDTH,
                 dHeight: AnimationFrame.CHARACTER.HEIGHT
@@ -74,7 +75,8 @@ export class Renderer implements GameComponent{
                 sWidth : AnimationFrame.CHARACTER.WIDTH,
                 sHeight: AnimationFrame.CHARACTER.HEIGHT,
 
-                dX:0,dY:0,
+                dX: (<Entity>drawable).position.x,
+                dY: (<Entity>drawable).position.y,
 
                 dWidth : AnimationFrame.CHARACTER.WIDTH,
                 dHeight: AnimationFrame.CHARACTER.HEIGHT

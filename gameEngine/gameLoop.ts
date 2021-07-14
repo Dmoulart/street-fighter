@@ -6,7 +6,6 @@ import {$} from "../assets/assets.js";
 import {Player} from "./player.js";
 import {ActionCommands, Commands} from "./commands.js";
 import {Action} from "../simulation/actions/action.js";
-import {DefaultAction} from "../simulation/actions/stillAction.js";
 import {_} from "../simulation/simulationServices.js";
 
 
@@ -27,9 +26,7 @@ export class GameLoop{
     public start() : void {
         this.player = new Player;
         this.player.input.listen();
-        this.player.character.action = new DefaultAction(this.player.character);
-        this.player.character.action.start();
-        this.player.character.animation.start()
+
         GameTime.startTimer();
 
         this.run();
@@ -41,13 +38,16 @@ export class GameLoop{
         const action  : Action         = _.action.factory.getAction(command,this.player);
 
 
-        _.action.allocator.allocate(this.player.character, action)
+        _.action.allocator.allocate(this.player.character, action);
 
         _.action.conductor.updateAction(this.player.character);
+
+        _.action.executor.execute(this.player.character.action);
 
 
         this.clear();
         this.draw();
+
         requestAnimationFrame(this.run.bind(this));
     }
 

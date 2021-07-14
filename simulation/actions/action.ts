@@ -1,16 +1,24 @@
 import {Entity} from "../../objectSystem/entity.js";
-import {ACTION_DURATION} from "../../config/config.js";
+import {ACTION_MINIMUM_DURATION} from "../../config/config.js";
 import {NOT_STARTED, Timable} from "../timable.js";
+
+export enum ActionKeys{
+    STILL      = "STILL",
+    MOVE       = "MOVE_",
+    MOVE_LEFT  = `MOVE_LEFT`,
+    MOVE_RIGHT = "MOVE_RIGHT"
+}
+
 
 export abstract class Action implements Timable{
 
     public key     !:string;
 
     public isRunning:boolean   = false;
-    public duration :number    = ACTION_DURATION;
+    public duration :number    = ACTION_MINIMUM_DURATION;
     public startTime:number    = NOT_STARTED;
 
-    protected readonly source!:Entity;
+    public readonly source!:Entity;
 
     protected constructor(source:Entity) {
         this.source = source;

@@ -1,17 +1,35 @@
 import {Sprite} from "./sprite.js";
 import {Animation} from "./animation.js";
 import {Action} from "../simulation/actions/action.js";
+import {Vector} from "../simulation/vector.js";
+
 export const UNKNOWN_NAME = "unknown"
+
+export type Stats = {
+    speed:number;
+}
+
+export const DEFAULT_STATS :Stats = {
+    speed:4
+}
+
 export abstract class Entity{
 
     public   name       !: string;
     public   sprite     !: Sprite;
+    public   position   !: Vector;
+    public   stats      !: Stats;
     private _animation  !: Animation;
     private _action     !: Action;
 
-    protected constructor(sprite:Sprite,name:string = UNKNOWN_NAME) {
-        this.sprite = sprite;
-        this.name = name;
+    protected constructor(sprite:Sprite,
+                          name:string     = UNKNOWN_NAME,
+                          position:Vector = Vector.origin,
+                          stats:Stats     = DEFAULT_STATS) {
+        this.sprite   = sprite;
+        this.name     = name;
+        this.position = position;
+        this.stats    = stats;
     }
 
     public get action(){
@@ -20,7 +38,6 @@ export abstract class Entity{
     public set action(action:Action){
         this._action = action;
     }
-
     public get animation(){
         return this._animation;
     }

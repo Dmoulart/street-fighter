@@ -1,9 +1,16 @@
-import { ACTION_DURATION } from "../../config/config.js";
+import { ACTION_MINIMUM_DURATION } from "../../config/config.js";
 import { NOT_STARTED } from "../timable.js";
+export var ActionKeys;
+(function (ActionKeys) {
+    ActionKeys["STILL"] = "STILL";
+    ActionKeys["MOVE"] = "MOVE_";
+    ActionKeys["MOVE_LEFT"] = "MOVE_LEFT";
+    ActionKeys["MOVE_RIGHT"] = "MOVE_RIGHT";
+})(ActionKeys || (ActionKeys = {}));
 export class Action {
     constructor(source) {
         this.isRunning = false;
-        this.duration = ACTION_DURATION;
+        this.duration = ACTION_MINIMUM_DURATION;
         this.startTime = NOT_STARTED;
         this.source = source;
     }

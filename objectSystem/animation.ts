@@ -1,13 +1,13 @@
 import {Sprite} from "./sprite.js";
 import {AnimationFrame} from "./animationFrame.js";
-import {ACTION_DURATION, ANIMATION_FRAME_DURATION} from "../config/config.js";
+import {ACTION_MINIMUM_DURATION, ANIMATION_FRAME_DURATION} from "../config/config.js";
 import {NOT_STARTED, Timable} from "../simulation/timable.js";
 
 export class Animation implements Timable{
 
     public  readonly frames !:Array<AnimationFrame>;
 
-    public duration  :number  = ACTION_DURATION;
+    public duration  :number  = ACTION_MINIMUM_DURATION;
     public isRunning :boolean = false;
     public startTime :number  = NOT_STARTED;
 

@@ -1,7 +1,7 @@
 import {Sprite} from "../objectSystem/sprite.js";
 import {Loader} from "../gameEngine/loader.js";
-import {Character} from "../objectSystem/character";
-import {Animation} from "../objectSystem/animation";
+import {Character} from "../objectSystem/character.js";
+import {Animation} from "../objectSystem/animation.js";
 
 export type SpriteSet = {
     KEN: Sprite

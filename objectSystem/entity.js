@@ -1,8 +1,14 @@
+import { Vector } from "../simulation/vector.js";
 export const UNKNOWN_NAME = "unknown";
+export const DEFAULT_STATS = {
+    speed: 4
+};
 export class Entity {
-    constructor(sprite, name = UNKNOWN_NAME) {
+    constructor(sprite, name = UNKNOWN_NAME, position = Vector.origin, stats = DEFAULT_STATS) {
         this.sprite = sprite;
         this.name = name;
+        this.position = position;
+        this.stats = stats;
     }
     get action() {
         return this._action;

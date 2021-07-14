@@ -1,8 +1,10 @@
 import {Sprite} from "./sprite.js";
+
 enum CharacterDimensions{
     WIDTH=65,
     HEIGHT=100
 }
+
 export class AnimationFrame{
 
     private sprite!:Sprite;

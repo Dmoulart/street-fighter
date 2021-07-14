@@ -1,5 +1,5 @@
 import {AnimationBuilder} from "../objectSystem/animationBuilder.js";
-import {Character} from "../objectSystem/character.js";
+import {Character, CharacterNames} from "../objectSystem/character.js";
 import {Sprite} from "../objectSystem/sprite.js";
 import {$, CharacterAnimations, CharacterSet, SpriteSet} from "../assets/assets.js";
 
@@ -37,7 +37,7 @@ export class Loader {
 
     private static loadCharacters():void{
         Loader.loadedCharacters = {
-            KEN: new Character($.SPRITES.KEN,"KEN")
+            KEN: new Character($.SPRITES.KEN,CharacterNames.Ken)
         }
     }
 

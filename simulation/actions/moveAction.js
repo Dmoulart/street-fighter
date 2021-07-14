@@ -1,4 +1,4 @@
-import { Action } from "./action.js";
+import { Action, ActionKeys } from "./action.js";
 export var Directions;
 (function (Directions) {
     Directions["Up"] = "UP";
@@ -10,6 +10,6 @@ export class MoveAction extends Action {
     constructor(source, direction) {
         super(source);
         this.direction = direction;
-        this.key = `MOVE_${direction}`;
+        this.key = `${ActionKeys.MOVE}${direction}`;
     }
 }

@@ -27,7 +27,8 @@ export class Renderer {
                 sX: frame.x, sY: frame.y,
                 sWidth: AnimationFrame.CHARACTER.WIDTH,
                 sHeight: AnimationFrame.CHARACTER.HEIGHT,
-                dX: 0, dY: 0,
+                dX: animable.position.x,
+                dY: animable.position.y,
                 dWidth: AnimationFrame.CHARACTER.WIDTH,
                 dHeight: AnimationFrame.CHARACTER.HEIGHT
             };
@@ -38,7 +39,8 @@ export class Renderer {
                 sX: 0, sY: 0,
                 sWidth: AnimationFrame.CHARACTER.WIDTH,
                 sHeight: AnimationFrame.CHARACTER.HEIGHT,
-                dX: 0, dY: 0,
+                dX: drawable.position.x,
+                dY: drawable.position.y,
                 dWidth: AnimationFrame.CHARACTER.WIDTH,
                 dHeight: AnimationFrame.CHARACTER.HEIGHT
             };

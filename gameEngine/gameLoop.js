@@ -30,6 +30,7 @@ export class GameLoop {
         requestAnimationFrame(this.run.bind(this));
     }
     draw() {
+        engine.renderer.render($.STAGES.BLANKA, graphics.getCharacterLayer());
         engine.renderer.render($.CHARACTERS.KEN, graphics.getCharacterLayer());
     }
     clear() {

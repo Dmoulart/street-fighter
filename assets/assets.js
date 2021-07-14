@@ -18,6 +18,12 @@ export class Assets {
         }
         return Assets._CHARACTERS ?? (Assets._CHARACTERS = Loader.loadedCharacters);
     }
+    static get STAGES() {
+        if (!Loader.loadedStages) {
+            throw new Error("Can't get stages because they have not been loaded yet");
+        }
+        return Assets._STAGES ?? (Assets._STAGES = Loader.loadedStages);
+    }
 }
 /**
  * This constant is an Assets class alias

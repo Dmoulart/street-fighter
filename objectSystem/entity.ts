@@ -2,6 +2,7 @@ import {Sprite} from "./sprite.js";
 import {Animation} from "./animation.js";
 import {Action} from "../simulation/actions/action.js";
 import {Vector} from "../simulation/vector.js";
+import {Drawable} from "./drawable";
 
 export const UNKNOWN_NAME = "unknown"
 
@@ -13,7 +14,7 @@ export const DEFAULT_STATS :Stats = {
     speed:4
 }
 
-export abstract class Entity{
+export abstract class Entity implements Drawable{
 
     public   name       !: string;
     public   sprite     !: Sprite;
@@ -44,4 +45,7 @@ export abstract class Entity{
     public set animation(animation:Animation){
         this._animation = animation;
     }
+
+    abstract height: number;
+    abstract width: number;
 }

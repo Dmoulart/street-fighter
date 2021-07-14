@@ -1,8 +1,8 @@
 export const ROOT_DIR:string = "StreetFighter"
 
 export const GAME_RESOLUTION:{width:number,height:number} = {
-    width:innerWidth,
-    height:innerHeight
+    width:768,
+    height:240
 }
 
 export const FPS : number = 60;

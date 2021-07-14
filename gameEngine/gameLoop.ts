@@ -52,6 +52,7 @@ export class GameLoop{
     }
 
     private draw(): void{
+        engine.renderer.render($.STAGES.BLANKA ,graphics.getCharacterLayer())
         engine.renderer.render($.CHARACTERS.KEN,graphics.getCharacterLayer())
     }
 

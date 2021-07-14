@@ -1,3 +1,4 @@
 export function isAnimable(object) {
-    return 'animation' in object;
+    //We check not only if object has an animation field but if object has an animation setted
+    return 'animation' in object && object['animation'] !== undefined;
 }

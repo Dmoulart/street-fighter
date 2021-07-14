@@ -56,14 +56,14 @@ export class Renderer implements GameComponent{
 
                 sX:frame.x, sY:frame.y,
 
-                sWidth : AnimationFrame.CHARACTER.WIDTH,
-                sHeight: AnimationFrame.CHARACTER.HEIGHT,
+                sWidth : animable.width,
+                sHeight: animable.height,
 
                 dX: (<Entity>animable).position.x,
                 dY: (<Entity>animable).position.y,
 
-                dWidth : AnimationFrame.CHARACTER.WIDTH,
-                dHeight: AnimationFrame.CHARACTER.HEIGHT
+                dWidth : animable.width,
+                dHeight: animable.height
             }
         }
         const getDrawableDrawOrder = (drawable: Drawable) => {
@@ -72,14 +72,14 @@ export class Renderer implements GameComponent{
 
                 sX:0,sY:0,
 
-                sWidth : AnimationFrame.CHARACTER.WIDTH,
-                sHeight: AnimationFrame.CHARACTER.HEIGHT,
+                sWidth : drawable.width,
+                sHeight: drawable.height,
 
                 dX: (<Entity>drawable).position.x,
                 dY: (<Entity>drawable).position.y,
 
-                dWidth : AnimationFrame.CHARACTER.WIDTH,
-                dHeight: AnimationFrame.CHARACTER.HEIGHT
+                dWidth : drawable.width,
+                dHeight: drawable.height
             }
         }
 

@@ -17,8 +17,8 @@ export class Loader {
             KEN: new Sprite(Sprite.URI.KEN),
             BLANKA_STAGE: new Sprite(Sprite.URI.BLANKA_STAGE)
         };
-        return Loader.loadedSprites.KEN.loadImage()
-            .then(_ => Loader.loadedSprites.BLANKA_STAGE.loadImage());
+        await Loader.loadedSprites.KEN.loadImage();
+        return Loader.loadedSprites.BLANKA_STAGE.loadImage();
     }
     static loadAnimations() {
         const animationBuilder = AnimationBuilder.getInstance();

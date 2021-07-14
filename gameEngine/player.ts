@@ -3,6 +3,7 @@ import {GameAgent} from "./gameAgent.js";
 import {Character} from "../objectSystem/character.js";
 import {$} from "../assets/assets.js";
 import {Vector} from "../simulation/vector.js";
+import {Stage} from "../objectSystem/stage.js";
 
 export class Player extends GameAgent{
 
@@ -13,7 +14,7 @@ export class Player extends GameAgent{
         this.input = input;
         this.input.player = this;
         this.character = character;
-        this.character.position = new Vector(0,120)
+        this.character.position = new Vector(0,Stage.GROUND_HEIGHT)
     }
 
 }

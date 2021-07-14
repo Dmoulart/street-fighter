@@ -21,12 +21,14 @@ export class Loader {
     }
 
     private static async loadSprites(): Promise<HTMLImageElement>{
+
        Loader.loadedSprites = {
             KEN         : new Sprite(Sprite.URI.KEN),
             BLANKA_STAGE: new Sprite(Sprite.URI.BLANKA_STAGE)
         }
-        return Loader.loadedSprites.KEN.loadImage()
-            .then(_=>Loader.loadedSprites.BLANKA_STAGE.loadImage());
+
+        await  Loader.loadedSprites.KEN.loadImage()
+        return Loader.loadedSprites.BLANKA_STAGE.loadImage();
     }
 
     private static loadAnimations():void{

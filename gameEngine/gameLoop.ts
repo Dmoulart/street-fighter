@@ -24,12 +24,14 @@ export class GameLoop{
     }
 
     public start() : void {
+
         this.player = new Player;
         this.player.input.listen();
 
         GameTime.startTimer();
 
         this.run();
+
     }
 
     private run() : void {
@@ -52,7 +54,7 @@ export class GameLoop{
     }
 
     private draw(): void{
-        engine.renderer.render($.STAGES.BLANKA ,graphics.getCharacterLayer())
+        engine.renderer.render($.STAGES.BLANKA ,graphics.getStageLayer())
         engine.renderer.render($.CHARACTERS.KEN,graphics.getCharacterLayer())
     }
 

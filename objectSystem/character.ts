@@ -12,7 +12,7 @@ export enum CharacterNames {
 export class Character extends Entity implements Drawable, Animable{
 
     public height: number = AnimationFrame.CHARACTER.HEIGHT;
-    public width: number  =  AnimationFrame.CHARACTER.WIDTH;
+    public width: number  = AnimationFrame.CHARACTER.WIDTH;
 
     public constructor(sprite:Sprite,
                        name:string = UNKNOWN_NAME,

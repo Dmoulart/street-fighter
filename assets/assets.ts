@@ -23,36 +23,26 @@ export class Assets{
     private static _CHARACTERS : CharacterSet;
 
     public static get SPRITES() :SpriteSet{
-        if(!Assets._SPRITES){
-            if(!Loader.loadedSprites) {
-                throw new Error("Can't get sprites because they have not been loaded yet")
-            }
-            Assets._SPRITES = Loader.loadedSprites;
+        if(!Loader.loadedSprites) {
+            throw new Error("Can't get sprites because they have not been loaded yet")
         }
-        return Assets._SPRITES;
+        return Assets._SPRITES ?? (Assets._SPRITES = Loader.loadedSprites);
     }
 
     public static get ANIMATIONS() :CharacterAnimations{
-        if(!Assets._ANIMATIONS){
-            if(!Loader.loadedAnimations) {
-                throw new Error("Can't get animations because they have not been loaded yet")
-            }
-            Assets._ANIMATIONS = Loader.loadedAnimations;
+        if(!Loader.loadedAnimations) {
+            throw new Error("Can't get animations because they have not been loaded yet")
         }
-        return Assets._ANIMATIONS;
+        return Assets._ANIMATIONS ?? (Assets._ANIMATIONS = Loader.loadedAnimations);
     }
 
     public static get CHARACTERS() :CharacterSet{
-        if(!Assets._CHARACTERS){
-            if(!Loader.loadedCharacters) {
-                throw new Error("Can't get characters because they have not been loaded yet")
-            }
-            Assets._CHARACTERS = Loader.loadedCharacters;
+        if(!Loader.loadedCharacters) {
+            throw new Error("Can't get characters because they have not been loaded yet")
         }
-        return Assets._CHARACTERS;
+        return Assets._CHARACTERS ?? (Assets._CHARACTERS = Loader.loadedCharacters);
     }
 }
-
 /**
  * This constant is an Assets class alias
  */

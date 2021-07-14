@@ -22,6 +22,7 @@ export class Loader {
             KEN: {
                 STILL: animationBuilder.build($.SPRITES.KEN, Sprite.ANIMATION_ROW.STILL),
                 MOVE_RIGHT: animationBuilder.build($.SPRITES.KEN, Sprite.ANIMATION_ROW.MOVE_RIGHT),
+                MOVE_LEFT: animationBuilder.build($.SPRITES.KEN, Sprite.ANIMATION_ROW.MOVE_LEFT),
             }
         };
     }

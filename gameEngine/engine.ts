@@ -8,10 +8,7 @@ export class Engine{
     private constructor(){}
 
     public static getInstance() : Engine{
-        if(!this.instance){
-            this.instance = new Engine;
-        }
-        return this.instance;
+        return this.instance ?? (this.instance = new Engine);
     }
     public initialize() : Engine{
         this.renderer = new Renderer;

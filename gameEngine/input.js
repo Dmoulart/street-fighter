@@ -19,13 +19,13 @@ export class Input {
         onkeyup = this.removeUnpressedKey;
         return this._pressedKeys;
     }
-    get pressedKeys() {
-        return this._pressedKeys;
-    }
     addPressedKey(e) {
         this._pressedKeys.set(e.key, true);
     }
     removeUnpressedKey(e) {
         this._pressedKeys.delete(e.key);
+    }
+    get pressedKeys() {
+        return this._pressedKeys;
     }
 }

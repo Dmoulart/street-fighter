@@ -6,15 +6,14 @@ export type MoveKeys = {
     Jump      : string[],
     Bow       : string[]
 }
-export type PlayerConfig = {
-    moveKeys:MoveKeys
-}
-
 const defaultMoveKeys : MoveKeys = {
     moveLeft  : ["ArrowLeft" ],
     moveRight : ["ArrowRight"],
     Jump      : ["ArrowUp"   ],
     Bow       : ["ArrowDown" ]
+}
+export type PlayerConfig = {
+    moveKeys:MoveKeys
 }
 const defaultConfig = {
     moveKeys:defaultMoveKeys
@@ -25,7 +24,7 @@ export class Input{
     public player !:Player;
     public config !:PlayerConfig;
 
-    private readonly _pressedKeys !: Map<string,boolean>;
+    private _pressedKeys !: Map<string,boolean>;
 
     public constructor(config:PlayerConfig = defaultConfig) {
         this.config             = config;
@@ -35,6 +34,7 @@ export class Input{
         this.removeUnpressedKey = this.removeUnpressedKey.bind(this);
     }
 
+
     public listen() :Map<string,boolean>{
 
         onkeydown = this.addPressedKey;
@@ -43,15 +43,16 @@ export class Input{
         return this._pressedKeys;
     }
 
-    public get pressedKeys() : Map<string,boolean>{
-        return this._pressedKeys;
-    }
-
     private addPressedKey(e:KeyboardEvent) : void {
-       this._pressedKeys.set(e.key,true);
+        this._pressedKeys.set(e.key,true);
     }
     private removeUnpressedKey(e:KeyboardEvent) : void {
         this._pressedKeys.delete(e.key)
+    }
+
+
+    public get pressedKeys() : Map<string,boolean>{
+        return this._pressedKeys;
     }
 
 

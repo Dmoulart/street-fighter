@@ -3,7 +3,7 @@ import { NOT_STARTED } from "../simulation/timable.js";
 export class Animation {
     constructor(sprite, frames) {
         this.duration = ACTION_DURATION;
-        this.isDone = false;
+        this.isRunning = false;
         this.startTime = NOT_STARTED;
         this.lastFrameTimeStamp = NOT_STARTED;
         this.currentFrameIndex = 0;
@@ -15,13 +15,18 @@ export class Animation {
         this.lastFrameTimeStamp = Date.now();
     }
     stop() {
-        this.startTime = NOT_STARTED;
-        this.isDone = true;
+        this.isRunning = true;
     }
     reset() {
         this.startTime = NOT_STARTED;
         this.lastFrameTimeStamp = NOT_STARTED;
         return this;
+    }
+    isTooSoonToChangeFrame() {
+        return this.timeElapsedSinceLastFrame < ANIMATION_FRAME_DURATION;
+    }
+    nextFrameIsOutOfBound() {
+        return this.currentFrameIndex + 1 >= this.frames.length;
     }
     get currentFrame() {
         if (this.isTooSoonToChangeFrame()
@@ -33,12 +38,6 @@ export class Animation {
         this.lastFrameTimeStamp = Date.now();
         return this.frames[this.currentFrameIndex];
     }
-    isTooSoonToChangeFrame() {
-        return this.timeElapsedSinceLastFrame < ANIMATION_FRAME_DURATION;
-    }
-    nextFrameIsOutOfBound() {
-        return this.currentFrameIndex + 1 >= this.frames.length;
-    }
     get hasStarted() {
         return this.startTime !== NOT_STARTED;
     }
@@ -47,5 +46,11 @@ export class Animation {
     }
     get elapsedTime() {
         return Date.now() - this.startTime;
+    }
+    get isDone() {
+        return this.elapsedTime >= this.duration;
+    }
+    get hasNotStartedYet() {
+        return this.startTime === NOT_STARTED;
     }
 }

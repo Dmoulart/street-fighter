@@ -7,11 +7,9 @@ export class Animation implements Timable{
 
     public  readonly frames !:Array<AnimationFrame>;
 
-
-
-    public duration: number  = ACTION_DURATION;
-    public isDone: boolean   = false;
-    public startTime:number  = NOT_STARTED;
+    public duration  :number  = ACTION_DURATION;
+    public isRunning :boolean = false;
+    public startTime :number  = NOT_STARTED;
 
     private lastFrameTimeStamp  :number        = NOT_STARTED;
     private currentFrameIndex   :number        = 0;
@@ -23,19 +21,28 @@ export class Animation implements Timable{
         this.frames = frames;
     }
 
+
     public start():void{
         this.startTime          = Date.now();
         this.lastFrameTimeStamp = Date.now();
     }
     public stop():void{
-        this.startTime          = NOT_STARTED;
-        this.isDone             = true;
+        this.isRunning = true;
     }
     public reset():Animation{
         this.startTime          = NOT_STARTED;
         this.lastFrameTimeStamp = NOT_STARTED;
         return this;
     }
+
+    private isTooSoonToChangeFrame(): boolean  {
+        return this.timeElapsedSinceLastFrame < ANIMATION_FRAME_DURATION;
+    }
+    private nextFrameIsOutOfBound() : boolean {
+        return this.currentFrameIndex + 1 >= this.frames.length;
+    }
+
+
     public get currentFrame() : AnimationFrame {
 
         if(this.isTooSoonToChangeFrame()
@@ -49,24 +56,22 @@ export class Animation implements Timable{
 
         return this.frames[this.currentFrameIndex];
     }
-
-    private isTooSoonToChangeFrame(): boolean  {
-        return this.timeElapsedSinceLastFrame < ANIMATION_FRAME_DURATION;
-    }
-
-    private nextFrameIsOutOfBound() : boolean {
-        return this.currentFrameIndex + 1 >= this.frames.length;
-    }
-
     public get hasStarted():boolean{
         return this.startTime !== NOT_STARTED;
     }
-
-    public get timeElapsedSinceLastFrame() :number {
+    public get timeElapsedSinceLastFrame(): number {
         return Date.now() - this.lastFrameTimeStamp;
     }
-    public get elapsedTime() :number {
+    public get elapsedTime(): number {
         return Date.now() - this.startTime;
     }
+    public get isDone(): boolean{
+        return this.elapsedTime >= this.duration;
+    }
+    public get hasNotStartedYet(): boolean{
+        return this.startTime === NOT_STARTED;
+    }
+
+
 
 }

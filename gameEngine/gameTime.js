@@ -1,11 +1,9 @@
 import { FPS } from "../config/config.js";
 export class GameTime {
     static startTimer() {
-        if (GameTime._start) {
+        if (GameTime._start)
             throw new Error("GameTime has already been started");
-        }
-        GameTime._start = Date.now();
-        return GameTime._start;
+        return (GameTime._start = Date.now());
     }
     static get start() {
         return GameTime._start;
@@ -17,8 +15,7 @@ export class GameTime {
         return Date.now();
     }
     static get lag() {
-        GameTime._lag += GameTime.elapsed;
-        return GameTime._lag;
+        return (GameTime._lag += GameTime.elapsed);
     }
 }
 GameTime.FPS = FPS;

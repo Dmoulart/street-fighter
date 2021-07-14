@@ -1,24 +1,19 @@
 import { ActionCommands } from "../../gameEngine/commands.js";
 import { Directions, MoveAction } from "./moveAction.js";
+import { DefaultAction } from "./stillAction.js";
 export class ActionFactory {
     constructor() { }
     static getInstance() {
-        if (!this.instance) {
-            this.instance = new ActionFactory;
-        }
-        return this.instance;
+        return this.instance ?? (this.instance = new ActionFactory);
     }
     getAction(actionCommand, agent) {
-        let action = null;
-        switch (ActionCommands[actionCommand]) {
-            case ActionCommands[ActionCommands.MOVE_RIGHT]:
-                action = new MoveAction(agent.character, Directions.Right);
-                break;
-            case ActionCommands[ActionCommands.MOVE_LEFT]:
-                action = new MoveAction(agent.character, Directions.Left);
-                break;
-            default: break;
+        switch (actionCommand) {
+            case ActionCommands.MOVE_RIGHT:
+                return new MoveAction(agent.character, Directions.Right);
+            case ActionCommands.MOVE_LEFT:
+                return new MoveAction(agent.character, Directions.Left);
+            default:
+                return new DefaultAction(agent.character);
         }
-        return action;
     }
 }

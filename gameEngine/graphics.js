@@ -2,10 +2,7 @@ import { CanvasLayer } from "./canvasLayer.js";
 export class Graphics {
     constructor() { }
     static getInstance() {
-        if (!this.instance) {
-            this.instance = new Graphics;
-        }
-        return this.instance;
+        return this.instance ?? (this.instance = new Graphics);
     }
     initialize() {
         const characterCanvas = new CanvasLayer(Graphics.CHARACTER_CANVAS_LAYER_ID);

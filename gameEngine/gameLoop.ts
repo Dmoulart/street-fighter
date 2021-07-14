@@ -2,28 +2,33 @@ import {engine} from "./engine.js";
 import {graphics} from "./graphics.js";
 import {GameTime} from "./gameTime.js";
 import {Loader} from "./loader.js";
-import {$, Assets} from "../assets/assets.js";
+import {$} from "../assets/assets.js";
 import {Player} from "./player.js";
-import {Commands} from "./commands.js";
-import {ActionFactory} from "../simulation/actions/actionFactory.js";
+import {ActionCommands, Commands} from "./commands.js";
 import {Action} from "../simulation/actions/action.js";
-import {ActionHandler} from "../simulation/actions/actionHandler.js";
+import {DefaultAction} from "../simulation/actions/stillAction.js";
+import {_} from "../simulation/simulationServices.js";
+
 
 export class GameLoop{
 
     private player !: Player;
-    private actionFactory :ActionFactory = ActionFactory.getInstance();
+
+
     public async load(){
 
         engine.initialize();
         graphics.initialize();
 
-        return Loader.load();
+        await Loader.load();
+        return this;
     }
 
     public start() : void {
         this.player = new Player;
         this.player.input.listen();
+        this.player.character.action = new DefaultAction(this.player.character);
+        this.player.character.action.start();
         this.player.character.animation.start()
         GameTime.startTimer();
 
@@ -32,14 +37,13 @@ export class GameLoop{
 
     private run() : void {
 
-        const command = Commands.getCommandFrom(this.player);
-        const action : Action|null = this.actionFactory.getAction(command,this.player);
+        const command : ActionCommands = Commands.getCommandFrom(this.player);
+        const action  : Action         = _.action.factory.getAction(command,this.player);
 
-        if(action){
-            this.player.character.action = action;
-        }
 
-        ActionHandler.getInstance().updateActionAndAnimation(this.player.character);
+        _.action.allocator.allocate(this.player.character, action)
+
+        _.action.conductor.updateAction(this.player.character);
 
 
         this.clear();

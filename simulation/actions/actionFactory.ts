@@ -2,6 +2,7 @@ import {Action} from "./action.js";
 import {ActionCommands} from "../../gameEngine/commands.js";
 import {Directions, MoveAction} from "./moveAction.js";
 import {GameAgent} from "../../gameEngine/gameAgent.js";
+import { DefaultAction } from "./stillAction.js";
 
 export class ActionFactory {
 
@@ -9,29 +10,25 @@ export class ActionFactory {
 
     private constructor(){}
 
+
     public static getInstance() : ActionFactory{
-        if(!this.instance){
-            this.instance = new ActionFactory;
-        }
-        return this.instance;
+        return this.instance ?? (this.instance = new ActionFactory);
     }
+    public getAction(actionCommand : ActionCommands, agent :GameAgent):Action{
 
-    public getAction(actionCommand : ActionCommands, agent :GameAgent):Action | null{
+        switch(actionCommand){
 
-        let action:Action | null = null;
+            case ActionCommands.MOVE_RIGHT:
+                return new MoveAction(agent.character,Directions.Right);
 
-        switch(ActionCommands[actionCommand]){
+            case ActionCommands.MOVE_LEFT:
+                return new MoveAction(agent.character,Directions.Left);
 
-            case ActionCommands[ActionCommands.MOVE_RIGHT]:
-                action = new MoveAction(agent.character,Directions.Right);
-                break;
-            case ActionCommands[ActionCommands.MOVE_LEFT]:
-                action = new MoveAction(agent.character,Directions.Left);
-                break;
-            default: break;
+            default:
+                return new DefaultAction(agent.character);
+
         }
 
-        return action;
     }
 
 }

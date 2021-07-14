@@ -2,7 +2,11 @@ import { Action } from "./action.js";
 export class StillAction extends Action {
     constructor(character) {
         super(character);
-        this.animationKey = `STILL`;
+        this.key = `STILL`;
+    }
+    get isPossible() {
+        return this.isNotOfSameActionTypeAs(this.source.action)
+            && this.source.action.isDone;
     }
 }
-export const setDefaultAction = (character) => new StillAction(character);
+export const DefaultAction = StillAction;

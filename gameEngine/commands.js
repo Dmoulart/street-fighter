@@ -1,3 +1,4 @@
+import { Player } from "./player.js";
 export var ActionCommands;
 (function (ActionCommands) {
     ActionCommands[ActionCommands["NONE"] = 0] = "NONE";
@@ -6,35 +7,35 @@ export var ActionCommands;
     ActionCommands[ActionCommands["JUMP"] = 3] = "JUMP";
     ActionCommands[ActionCommands["BOW"] = 4] = "BOW";
 })(ActionCommands || (ActionCommands = {}));
+//type ActionCommand = keyof typeof ActionCommands;
 export class Commands {
     static getCommandFrom(agent) {
-        return Commands.getCommand(agent.input.pressedKeys, agent.input.config);
+        if (agent instanceof Player) {
+            return Commands.getCommandFromPlayer(agent.input.pressedKeys, agent.input.config);
+        }
+        else {
+            throw new Error('Not implemented');
+        }
     }
-    static getCommand(sourceKeys, config) {
+    static getCommandFromPlayer(sourceKeys, config) {
         const sourceKeysMatchTargetKeys = (sourceKeys) => (targetKeys) => {
-            let isPressed = true;
-            targetKeys.forEach(commandKey => {
-                if (!sourceKeys.get(commandKey)) {
-                    isPressed = false;
-                }
-            });
-            return isPressed;
+            return targetKeys.every(targetKey => sourceKeys.get(targetKey));
         };
         return this.getActionCommand(sourceKeysMatchTargetKeys(sourceKeys), config) ?? ActionCommands.NONE;
     }
-    static getActionCommand(keysArePressed, config) {
+    static getActionCommand(pressedKeysMatch, config) {
         let actionCommand;
         switch (true) {
-            case keysArePressed(config.moveKeys.moveRight):
+            case pressedKeysMatch(config.moveKeys.moveRight):
                 actionCommand = ActionCommands.MOVE_RIGHT;
                 break;
-            case keysArePressed(config.moveKeys.moveLeft):
+            case pressedKeysMatch(config.moveKeys.moveLeft):
                 actionCommand = ActionCommands.MOVE_LEFT;
                 break;
-            case keysArePressed(config.moveKeys.Jump):
+            case pressedKeysMatch(config.moveKeys.Jump):
                 actionCommand = ActionCommands.JUMP;
                 break;
-            case keysArePressed(config.moveKeys.Bow):
+            case pressedKeysMatch(config.moveKeys.Bow):
                 actionCommand = ActionCommands.BOW;
                 break;
             default:
@@ -43,4 +44,3 @@ export class Commands {
         return actionCommand;
     }
 }
-Commands.ACTION = ActionCommands;

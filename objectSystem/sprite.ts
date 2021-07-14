@@ -4,9 +4,11 @@ import {loadImage} from "../utils/image.js";
 /**
  * Sprite row corresponding to animation
  */
+
 enum AnimationRow{
-    STILL = 1,
-    MOVE_RIGHT = 2
+    STILL       = 1,
+    MOVE_RIGHT  = 2,
+    MOVE_LEFT   = 3
 }
 enum SpriteURL{
     KEN = "../assets/sprites/ken.png"

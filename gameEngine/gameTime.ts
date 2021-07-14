@@ -13,11 +13,8 @@ export class GameTime{
     private static _lag: number = 0;
 
     public static startTimer() : number{
-        if(GameTime._start){
-            throw new Error("GameTime has already been started");
-        }
-        GameTime._start = Date.now();
-        return GameTime._start;
+        if(GameTime._start) throw new Error("GameTime has already been started");
+        return (GameTime._start = Date.now())
     }
     public static get start():number{
         return GameTime._start;
@@ -29,7 +26,6 @@ export class GameTime{
         return Date.now();
     }
     public static get lag() : number{
-        GameTime._lag += GameTime.elapsed;
-        return GameTime._lag;
+        return (GameTime._lag += GameTime.elapsed);
     }
 }

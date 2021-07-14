@@ -11,10 +11,7 @@ export class Graphics implements GameComponent{
     private constructor(){}
 
     public static getInstance() : Graphics{
-        if(!this.instance){
-            this.instance = new Graphics;
-        }
-        return this.instance;
+        return this.instance ?? (this.instance = new Graphics);
     }
 
     public initialize() : Graphics{

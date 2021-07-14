@@ -7,6 +7,7 @@ var AnimationRow;
 (function (AnimationRow) {
     AnimationRow[AnimationRow["STILL"] = 1] = "STILL";
     AnimationRow[AnimationRow["MOVE_RIGHT"] = 2] = "MOVE_RIGHT";
+    AnimationRow[AnimationRow["MOVE_LEFT"] = 3] = "MOVE_LEFT";
 })(AnimationRow || (AnimationRow = {}));
 var SpriteURL;
 (function (SpriteURL) {

@@ -1,31 +1,22 @@
 import { Loader } from "../gameEngine/loader.js";
 export class Assets {
     static get SPRITES() {
-        if (!Assets._SPRITES) {
-            if (!Loader.loadedSprites) {
-                throw new Error("Can't get sprites because they have not been loaded yet");
-            }
-            Assets._SPRITES = Loader.loadedSprites;
+        if (!Loader.loadedSprites) {
+            throw new Error("Can't get sprites because they have not been loaded yet");
         }
-        return Assets._SPRITES;
+        return Assets._SPRITES ?? (Assets._SPRITES = Loader.loadedSprites);
     }
     static get ANIMATIONS() {
-        if (!Assets._ANIMATIONS) {
-            if (!Loader.loadedAnimations) {
-                throw new Error("Can't get animations because they have not been loaded yet");
-            }
-            Assets._ANIMATIONS = Loader.loadedAnimations;
+        if (!Loader.loadedAnimations) {
+            throw new Error("Can't get animations because they have not been loaded yet");
         }
-        return Assets._ANIMATIONS;
+        return Assets._ANIMATIONS ?? (Assets._ANIMATIONS = Loader.loadedAnimations);
     }
     static get CHARACTERS() {
-        if (!Assets._CHARACTERS) {
-            if (!Loader.loadedCharacters) {
-                throw new Error("Can't get characters because they have not been loaded yet");
-            }
-            Assets._CHARACTERS = Loader.loadedCharacters;
+        if (!Loader.loadedCharacters) {
+            throw new Error("Can't get characters because they have not been loaded yet");
         }
-        return Assets._CHARACTERS;
+        return Assets._CHARACTERS ?? (Assets._CHARACTERS = Loader.loadedCharacters);
     }
 }
 /**

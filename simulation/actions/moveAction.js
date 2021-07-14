@@ -10,6 +10,6 @@ export class MoveAction extends Action {
     constructor(source, direction) {
         super(source);
         this.direction = direction;
-        this.animationKey = `MOVE_${direction}`;
+        this.key = `MOVE_${direction}`;
     }
 }

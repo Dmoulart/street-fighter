@@ -21,4 +21,4 @@ export class Stage extends Entity {
 }
 Stage.HEIGHT = GAME_RESOLUTION.height;
 Stage.WIDTH = GAME_RESOLUTION.width;
-Stage.GROUND_HEIGHT = 120;
+Stage.GROUND_HEIGHT = 80;

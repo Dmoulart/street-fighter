@@ -14,7 +14,7 @@ export class Stage extends Entity implements Drawable{
     static readonly HEIGHT:number = GAME_RESOLUTION.height;
     static readonly WIDTH :number = GAME_RESOLUTION.width;
 
-    static readonly GROUND_HEIGHT :number =  120;
+    static readonly GROUND_HEIGHT :number =  80;
 
     public readonly height: number = Stage.HEIGHT;
     public readonly width : number = Stage.WIDTH;

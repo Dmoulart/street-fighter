@@ -11,7 +11,7 @@ var AnimationRow;
 })(AnimationRow || (AnimationRow = {}));
 var SpriteURL;
 (function (SpriteURL) {
-    SpriteURL["KEN"] = "../assets/sprites/characters/ken.png";
+    SpriteURL["KEN"] = "../assets/sprites/characters/ken_2.png";
     SpriteURL["BLANKA_STAGE"] = "../assets/sprites/stages/blanka.png";
 })(SpriteURL || (SpriteURL = {}));
 export class Sprite {

@@ -9,6 +9,6 @@ export class Player extends GameAgent {
         this.input = input;
         this.input.player = this;
         this.character = character;
-        this.character.position = new Vector(0, Stage.GROUND_HEIGHT);
+        this.character.position = new Vector(100, Stage.GROUND_HEIGHT);
     }
 }

@@ -11,7 +11,7 @@ enum AnimationRow{
     MOVE_LEFT   = 3
 }
 enum SpriteURL{
-    KEN          = "../assets/sprites/characters/ken.png",
+    KEN          = "../assets/sprites/characters/ken_2.png",
     BLANKA_STAGE = "../assets/sprites/stages/blanka.png"
 }
 

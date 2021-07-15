@@ -1,6 +1,7 @@
 import { ActionCommands } from "../../gameEngine/commands.js";
 import { Directions, MoveAction } from "./moveAction.js";
 import { DefaultAction } from "./stillAction.js";
+import { JumpAction } from "./jumpAction.js";
 export class ActionFactory {
     constructor() { }
     static getInstance() {
@@ -12,6 +13,8 @@ export class ActionFactory {
                 return new MoveAction(agent.character, Directions.Right);
             case ActionCommands.MOVE_LEFT:
                 return new MoveAction(agent.character, Directions.Left);
+            case ActionCommands.JUMP:
+                return new JumpAction(agent.character);
             default:
                 return new DefaultAction(agent.character);
         }

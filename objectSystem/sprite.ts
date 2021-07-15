@@ -8,7 +8,8 @@ import {loadImage} from "../utils/image.js";
 enum AnimationRow{
     STILL       = 1,
     MOVE_RIGHT  = 2,
-    MOVE_LEFT   = 3
+    MOVE_LEFT   = 3,
+    JUMP        = 4,
 }
 enum SpriteURL{
     KEN          = "../assets/sprites/characters/ken_2.png",

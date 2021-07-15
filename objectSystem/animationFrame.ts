@@ -24,9 +24,9 @@ export class AnimationFrame{
         width:number,
         height:number
     }) {
-        this.sprite = params.sprite;
+        this.sprite         = params.sprite;
         this.sourcePosition = params.sourcePosition;
-        this.width  = params.width;
-        this.height = params.height;
+        this.width          = params.width;
+        this.height         = params.height;
     }
 }

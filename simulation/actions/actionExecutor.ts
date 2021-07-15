@@ -1,6 +1,7 @@
 import {Action, ActionKeys} from "./action.js";
 import {IActionExecutor} from "./IactionExecutor.js";
 import {MoveExecutor} from "./moveExecutor.js";
+import {JumpExecutor} from "./jumpExecutor.js";
 
 export class ActionExecutor {
 
@@ -25,6 +26,9 @@ export class ActionExecutor {
                 actionExecutor = new MoveExecutor;
                 break;
             case ActionKeys.STILL:
+                break;
+            case ActionKeys.JUMP:
+                actionExecutor = new JumpExecutor;
                 break;
             default: break;
 

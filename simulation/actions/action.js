@@ -6,6 +6,7 @@ export var ActionKeys;
     ActionKeys["MOVE"] = "MOVE_";
     ActionKeys["MOVE_LEFT"] = "MOVE_LEFT";
     ActionKeys["MOVE_RIGHT"] = "MOVE_RIGHT";
+    ActionKeys["JUMP"] = "JUMP";
 })(ActionKeys || (ActionKeys = {}));
 export class Action {
     constructor(source) {

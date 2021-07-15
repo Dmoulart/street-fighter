@@ -8,5 +8,5 @@ export const GAME_RESOLUTION:{width:number,height:number} = {
 export const FPS : number = 60;
 
 export const ANIMATION_FRAME_DURATION : number = 70;
-export const ACTION_MINIMUM_DURATION  : number = ANIMATION_FRAME_DURATION;
+export const ACTION_MINIMUM_DURATION  : number = ANIMATION_FRAME_DURATION*6;
 

@@ -4,15 +4,14 @@ import {AnimationFrame} from "./animationFrame.js";
 import {Vector} from "../simulation/vector.js";
 import {GhostCanvas} from "../gameEngine/ghostCanvas.js";
 
+
 export class AnimationBuilder{
 
     private static instance:AnimationBuilder;
 
     private analyticCanvas:GhostCanvas = new GhostCanvas;
 
-    private constructor(){
-
-    }
+    private constructor(){}
 
     public static getInstance() : AnimationBuilder{
         return this.instance ?? (this.instance = new AnimationBuilder);

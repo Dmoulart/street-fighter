@@ -43,17 +43,16 @@ export class Input{
         return this._pressedKeys;
     }
 
+    public get pressedKeys() : Map<string,boolean>{
+        return this._pressedKeys;
+    }
+
+
     private addPressedKey(e:KeyboardEvent) : void {
         this._pressedKeys.set(e.key,true);
     }
     private removeUnpressedKey(e:KeyboardEvent) : void {
         this._pressedKeys.delete(e.key)
     }
-
-
-    public get pressedKeys() : Map<string,boolean>{
-        return this._pressedKeys;
-    }
-
 
 }

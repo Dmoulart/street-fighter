@@ -1,5 +1,6 @@
 import { ActionKeys } from "./action.js";
 import { MoveExecutor } from "./moveExecutor.js";
+import { JumpExecutor } from "./jumpExecutor.js";
 export class ActionExecutor {
     constructor() { }
     static getInstance() {
@@ -16,6 +17,9 @@ export class ActionExecutor {
                 actionExecutor = new MoveExecutor;
                 break;
             case ActionKeys.STILL:
+                break;
+            case ActionKeys.JUMP:
+                actionExecutor = new JumpExecutor;
                 break;
             default: break;
         }

@@ -6,7 +6,8 @@ export enum ActionKeys{
     STILL      = "STILL",
     MOVE       = "MOVE_",
     MOVE_LEFT  = `MOVE_LEFT`,
-    MOVE_RIGHT = "MOVE_RIGHT"
+    MOVE_RIGHT = "MOVE_RIGHT",
+    JUMP       = "JUMP",
 }
 
 
@@ -38,6 +39,7 @@ export abstract class Action implements Timable{
     public isNotOfSameActionTypeAs(action:Action){
         return !this.isOfSameActionTypeAs(action);
     }
+
     public get isPossible():boolean{
         return this.isNotOfSameActionTypeAs(this.source.action);
     }

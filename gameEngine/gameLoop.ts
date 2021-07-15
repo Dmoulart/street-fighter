@@ -37,8 +37,8 @@ export class GameLoop{
     private run() : void {
 
         const command : ActionCommands = Commands.getCommandFrom(this.player);
-        const action  : Action         = _.action.factory.getAction(command,this.player);
 
+        const action  : Action         = _.action.factory.getAction(command,this.player);
 
         _.action.allocator.allocate(this.player.character, action);
 

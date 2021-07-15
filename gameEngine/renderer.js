@@ -23,7 +23,8 @@ export class Renderer {
             let frame = animable.animation.currentFrame;
             return {
                 sprite: animable.sprite,
-                sX: frame.x, sY: frame.y,
+                sX: frame.sourcePosition.x,
+                sY: frame.sourcePosition.y,
                 sWidth: animable.width,
                 sHeight: animable.height,
                 dX: animable.position.x,

@@ -54,7 +54,8 @@ export class Renderer implements GameComponent{
             return {
                 sprite:animable.sprite,
 
-                sX:frame.x, sY:frame.y,
+                sX:frame.sourcePosition.x,
+                sY:frame.sourcePosition.y,
 
                 sWidth : animable.width,
                 sHeight: animable.height,

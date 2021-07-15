@@ -1,4 +1,5 @@
 import {Sprite} from "./sprite.js";
+import {Vector} from "../simulation/vector.js";
 
 enum CharacterDimensions{
     WIDTH=65,
@@ -9,8 +10,9 @@ export class AnimationFrame{
 
     private sprite!:Sprite;
 
-    public x!:number;
-    public y!:number;
+    public sourcePosition!:Vector;
+    // public x!:number;
+    // public y!:number;
 
     public width!:number;
     public height!:number;
@@ -20,14 +22,14 @@ export class AnimationFrame{
 
     constructor(params: {
         sprite:Sprite,
-        x:number,
-        y:number,
+        sourcePosition:Vector,
         width:number,
         height:number
     }) {
         this.sprite = params.sprite;
-        this.x      = params.x;
-        this.y      = params.y;
+        // this.x      = params.x;
+        // this.y      = params.y;
+        this.sourcePosition = params.sourcePosition;
         this.width  = params.width;
         this.height = params.height;
     }

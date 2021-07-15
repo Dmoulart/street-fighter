@@ -6,8 +6,9 @@ var CharacterDimensions;
 export class AnimationFrame {
     constructor(params) {
         this.sprite = params.sprite;
-        this.x = params.x;
-        this.y = params.y;
+        // this.x      = params.x;
+        // this.y      = params.y;
+        this.sourcePosition = params.sourcePosition;
         this.width = params.width;
         this.height = params.height;
     }

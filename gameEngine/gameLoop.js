@@ -25,6 +25,7 @@ export class GameLoop {
         _.action.allocator.allocate(this.player.character, action);
         _.action.conductor.updateAction(this.player.character);
         _.action.executor.execute(this.player.character.action);
+        _.gravity.apply(this.player.character);
         this.clear();
         this.draw();
         requestAnimationFrame(this.run.bind(this));

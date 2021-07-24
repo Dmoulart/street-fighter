@@ -1,5 +1,6 @@
 import { ACTION_MINIMUM_DURATION } from "../../config/config.js";
 import { NOT_STARTED } from "../timable.js";
+import { $ } from "../../assets/assets.js";
 export var ActionKeys;
 (function (ActionKeys) {
     ActionKeys["STILL"] = "STILL";
@@ -13,6 +14,7 @@ export class Action {
         this.isRunning = false;
         this.duration = ACTION_MINIMUM_DURATION;
         this.startTime = NOT_STARTED;
+        this.isStoppable = true;
         this.source = source;
     }
     start() {
@@ -41,5 +43,13 @@ export class Action {
     }
     get hasNotStartedYet() {
         return this.startTime === NOT_STARTED;
+    }
+    get canBeReplaced() {
+        return (this.isStoppable)
+            ? true
+            : this.isDone;
+    }
+    bindDurationToAnimationDuration(character) {
+        this.duration = $.ANIMATIONS[character.name][this.key].duration;
     }
 }

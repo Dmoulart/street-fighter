@@ -2,6 +2,7 @@ import { Animation } from "./animation.js";
 import { AnimationFrame } from "./animationFrame.js";
 import { Vector } from "../simulation/vector.js";
 import { GhostCanvas } from "../gameEngine/ghostCanvas.js";
+import { ANIMATION_FRAME_DURATION } from "../config/config.js";
 export class AnimationBuilder {
     constructor() {
         this.analyticCanvas = new GhostCanvas;
@@ -31,7 +32,7 @@ export class AnimationBuilder {
                 width: AnimationFrame.CHARACTER.WIDTH
             }));
         }
-        return new Animation(sprite, animationFrames);
+        return new Animation(sprite, animationFrames, animationFrames.length * ANIMATION_FRAME_DURATION);
     }
     /**
      * Use a ghost canvas to analyze frame by frame if a frame is empty.

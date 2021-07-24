@@ -1,7 +1,7 @@
 import { Vector } from "../simulation/vector.js";
 export const UNKNOWN_NAME = "unknown";
 export const DEFAULT_STATS = {
-    speed: 4
+    speed: 5
 };
 export class Entity {
     constructor(sprite, name = UNKNOWN_NAME, position = Vector.origin, stats = DEFAULT_STATS) {

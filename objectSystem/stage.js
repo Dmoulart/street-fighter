@@ -8,17 +8,30 @@ export var StageNames;
 export class Stage extends Entity {
     constructor(sprite, name = UNKNOWN_NAME) {
         super(sprite, name);
-        this.height = Stage.HEIGHT;
-        this.width = Stage.WIDTH;
-        this.groundHeight = Stage.GROUND_HEIGHT;
+        this.height = Stage.height;
+        this.width = Stage.width;
     }
     static isOutOfBounds(position) {
-        return position.x < 0
-            || position.y < 0
-            || position.x > Stage.WIDTH - AnimationFrame.CHARACTER.WIDTH
-            || position.y > Stage.HEIGHT - AnimationFrame.CHARACTER.HEIGHT;
+        return Stage.isTooFarLeft(position)
+            || Stage.isAboveTheHighestPoint(position)
+            || Stage.isBelowTheLowestPoint(position)
+            || Stage.isTooFarRight(position);
+    }
+    static isAboveTheHighestPoint(position) {
+        // Y:0 represents the highest point since canvas begin to draw in the top left corner
+        return position.y < 0;
+    }
+    static isTooFarLeft(position) {
+        return position.x < 0;
+    }
+    static isTooFarRight(position) {
+        return position.x > Stage.width - AnimationFrame.CHARACTER.WIDTH;
+    }
+    static isBelowTheLowestPoint(position) {
+        //Stage.height represents the lowestPoint so > Stage.groundHeight mean below groundHeight
+        return position.y > Stage.groundHeight;
     }
 }
-Stage.HEIGHT = GAME_RESOLUTION.height;
-Stage.WIDTH = GAME_RESOLUTION.width;
-Stage.GROUND_HEIGHT = 80;
+Stage.height = GAME_RESOLUTION.height;
+Stage.width = GAME_RESOLUTION.width;
+Stage.groundHeight = 80;

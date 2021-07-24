@@ -11,15 +11,14 @@ export enum StageNames {
 
 export class Stage extends Entity implements Drawable{
 
-    static readonly HEIGHT:number = GAME_RESOLUTION.height;
-    static readonly WIDTH :number = GAME_RESOLUTION.width;
+    static readonly height:number = GAME_RESOLUTION.height;
+    static readonly width :number = GAME_RESOLUTION.width;
 
-    static readonly GROUND_HEIGHT :number =  80;
+    static readonly groundHeight :number =  80;
 
-    public readonly height: number = Stage.HEIGHT;
-    public readonly width : number = Stage.WIDTH;
+    public readonly height: number = Stage.height;
+    public readonly width : number = Stage.width;
 
-    public readonly groundHeight:number = Stage.GROUND_HEIGHT;
 
 
     public constructor(sprite:Sprite, name:string = UNKNOWN_NAME) {
@@ -28,9 +27,26 @@ export class Stage extends Entity implements Drawable{
 
     public static isOutOfBounds(position: Vector):boolean {
 
-        return position.x < 0
-            || position.y < 0
-            || position.x > Stage.WIDTH  - AnimationFrame.CHARACTER.WIDTH
-            || position.y > Stage.HEIGHT - AnimationFrame.CHARACTER.HEIGHT;
+        return Stage.isTooFarLeft          (position)
+            || Stage.isAboveTheHighestPoint(position)
+            || Stage.isBelowTheLowestPoint (position)
+            || Stage.isTooFarRight         (position)
     }
+
+
+    private static isAboveTheHighestPoint(position:Vector) : boolean{
+        // Y:0 represents the highest point since canvas begin to draw in the top left corner
+       return position.y < 0
+    }
+    private static isTooFarLeft(position:Vector) : boolean{
+        return position.x < 0
+    }
+    private static isTooFarRight(position:Vector) : boolean{
+       return position.x > Stage.width  - AnimationFrame.CHARACTER.WIDTH
+    }
+    private static isBelowTheLowestPoint(position:Vector) : boolean{
+        //Stage.height represents the lowestPoint so > Stage.groundHeight mean below groundHeight
+        return position.y > Stage.groundHeight
+    }
+
 }

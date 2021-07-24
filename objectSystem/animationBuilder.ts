@@ -3,6 +3,7 @@ import {Animation} from "./animation.js";
 import {AnimationFrame} from "./animationFrame.js";
 import {Vector} from "../simulation/vector.js";
 import {GhostCanvas} from "../gameEngine/ghostCanvas.js";
+import {ANIMATION_FRAME_DURATION} from "../config/config.js";
 
 
 export class AnimationBuilder{
@@ -47,7 +48,11 @@ export class AnimationBuilder{
             );
 
         }
-        return new Animation(sprite,animationFrames);
+        return new Animation(
+            sprite,
+            animationFrames,
+            animationFrames.length * ANIMATION_FRAME_DURATION
+        );
     }
 
     /**

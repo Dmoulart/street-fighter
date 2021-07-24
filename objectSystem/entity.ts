@@ -11,7 +11,7 @@ export type Stats = {
 }
 
 export const DEFAULT_STATS :Stats = {
-    speed:4
+    speed:5
 }
 
 export abstract class Entity implements Drawable{

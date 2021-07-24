@@ -16,8 +16,8 @@ export class MoveExecutor implements IActionExecutor{
     }
 
     private getMove(action: MoveAction) :Vector{
-        let   move;
-        const speed = action.source.stats.speed;
+        let    move;
+        const  speed = action.source.stats.speed;
         switch (action.direction) {
 
             case Directions.Right:

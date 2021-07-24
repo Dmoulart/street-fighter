@@ -1,6 +1,8 @@
 import {Entity} from "../../objectSystem/entity.js";
 import {ACTION_MINIMUM_DURATION} from "../../config/config.js";
 import {NOT_STARTED, Timable} from "../timable.js";
+import {$} from "../../assets/assets.js";
+import {Character} from "../../objectSystem/character.js";
 
 export enum ActionKeys{
     STILL      = "STILL",
@@ -18,6 +20,7 @@ export abstract class Action implements Timable{
     public isRunning:boolean   = false;
     public duration :number    = ACTION_MINIMUM_DURATION;
     public startTime:number    = NOT_STARTED;
+    public isStoppable:boolean = true;
 
     public readonly source!:Entity;
 
@@ -40,6 +43,7 @@ export abstract class Action implements Timable{
         return !this.isOfSameActionTypeAs(action);
     }
 
+
     public get isPossible():boolean{
         return this.isNotOfSameActionTypeAs(this.source.action);
     }
@@ -53,5 +57,14 @@ export abstract class Action implements Timable{
     public get hasNotStartedYet(): boolean{
         return this.startTime === NOT_STARTED;
     }
+    public get canBeReplaced(): boolean{
+        return (this.isStoppable)
+        ? true
+        : this.isDone;
+    }
 
+
+    protected bindDurationToAnimationDuration(character:Character){
+        this.duration = $.ANIMATIONS[character.name][this.key].duration;
+    }
 }

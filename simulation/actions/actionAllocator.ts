@@ -13,7 +13,7 @@ export class ActionAllocator{
     }
 
     public allocate(character:Character, newAction:Action) : Action{
-        return (newAction.isPossible) ?
+        return (character.action.canBeReplaced && newAction.isPossible) ?
             (character.action = newAction)
             :
             character.action;

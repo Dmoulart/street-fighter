@@ -1,18 +1,19 @@
 import { ACTION_MINIMUM_DURATION, ANIMATION_FRAME_DURATION } from "../config/config.js";
 import { NOT_STARTED } from "../simulation/timable.js";
 export class Animation {
-    constructor(sprite, frames) {
-        this.duration = ACTION_MINIMUM_DURATION;
+    constructor(sprite, frames, duration = ACTION_MINIMUM_DURATION) {
         this.isRunning = false;
         this.startTime = NOT_STARTED;
         this.lastFrameTimeStamp = NOT_STARTED;
         this.currentFrameIndex = 0;
         this.sprite = sprite;
         this.frames = frames;
+        this.duration = duration;
     }
     start() {
         this.startTime = Date.now();
         this.lastFrameTimeStamp = Date.now();
+        this.currentFrameIndex = 0;
     }
     stop() {
         this.isRunning = true;

@@ -7,7 +7,7 @@ export class Animation implements Timable{
 
     public  readonly frames !:Array<AnimationFrame>;
 
-    public duration  :number  = ACTION_MINIMUM_DURATION;
+    public duration !:number  ;
     public isRunning :boolean = false;
     public startTime :number  = NOT_STARTED;
 
@@ -16,15 +16,19 @@ export class Animation implements Timable{
 
     private readonly sprite !:Sprite;
 
-    public constructor(sprite:Sprite ,frames: Array<AnimationFrame>) {
+    public constructor(sprite:Sprite,
+                       frames: Array<AnimationFrame>,
+                       duration:number=ACTION_MINIMUM_DURATION) {
         this.sprite = sprite;
         this.frames = frames;
+        this.duration = duration;
     }
 
 
     public start():void{
         this.startTime          = Date.now();
         this.lastFrameTimeStamp = Date.now();
+        this.currentFrameIndex  = 0;
     }
     public stop():void{
         this.isRunning = true;

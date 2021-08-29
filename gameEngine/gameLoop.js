@@ -23,7 +23,7 @@ export class GameLoop {
         const command = Commands.getCommandFrom(this.player);
         const action = _.action.factory.getAction(command, this.player);
         _.action.allocator.allocate(this.player.character, action);
-        _.action.conductor.updateAction(this.player.character);
+        _.action.conductor.updateAction(this.player.character.action);
         _.action.executor.execute(this.player.character.action);
         _.gravity.apply(this.player.character);
         this.clear();

@@ -7,24 +7,24 @@ export class ActionConductor {
     static getInstance() {
         return this.instance ?? (this.instance = new ActionConductor);
     }
-    updateAction(character) {
-        if (character.action.isDone) {
-            this.stopActionAndAnimation(character);
+    updateAction(action) {
+        if (action.isDone) {
+            this.stopActionAndAnimation(action.source);
         }
-        if (character.action.hasNotStartedYet) {
-            this.bindActionToAnimation(character);
-            this.startActionAndAnimation(character);
+        if (action.hasNotStartedYet) {
+            this.bindActionToAnimation(action.source);
+            this.startActionAndAnimation(action.source);
         }
     }
-    startActionAndAnimation(character) {
-        character.action.start();
-        character.animation.start();
+    startActionAndAnimation(source) {
+        source.action.start();
+        source.animation.start();
     }
-    stopActionAndAnimation(character) {
-        character.action.stop();
-        character.animation.stop();
+    stopActionAndAnimation(source) {
+        source.action.stop();
+        source.animation.stop();
     }
-    bindActionToAnimation(character) {
-        character.animation = $.ANIMATIONS[character.name][character.action.key];
+    bindActionToAnimation(source) {
+        source.animation = $.ANIMATIONS[source.name][source.action.key];
     }
 }

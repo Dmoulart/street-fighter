@@ -43,7 +43,7 @@ export class GameLoop{
 
         _.action.allocator.allocate    (this.player.character, action);
 
-        _.action.conductor.updateAction(this.player.character);
+        _.action.conductor.updateAction(this.player.character.action);
 
         _.action.executor.execute      (this.player.character.action);
 
